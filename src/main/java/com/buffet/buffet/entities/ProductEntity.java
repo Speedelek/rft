@@ -1,18 +1,21 @@
 package com.buffet.buffet.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "termek")
 public class ProductEntity  {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "termek_id")
     private int id;
+    @Column(name = "nev")
     private String name;
+    @Column(name = "ar")
     private int price;
-    private int quantity;
-
-    private ProductEntity(){}
+    @Column(name = "kategoria")
+    private int category;
 
     public int getId() {
         return id;
@@ -38,11 +41,11 @@ public class ProductEntity  {
         this.price = price;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getCategory() {
+        return category;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setCategory(int category) {
+        this.category = category;
     }
 }
