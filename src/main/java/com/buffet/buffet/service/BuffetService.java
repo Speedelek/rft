@@ -19,4 +19,8 @@ public class BuffetService {
         return buffetRepo.findAll();
     }
 
+    public BuffetEntity getBuffetByName(String name){
+        return buffetRepo.findByName(name);
+    }
+
 }

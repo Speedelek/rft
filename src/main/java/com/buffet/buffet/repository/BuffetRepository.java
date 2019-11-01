@@ -10,5 +10,6 @@ public interface BuffetRepository extends CrudRepository<BuffetEntity, Long> {
     //SELECT * FROM BUFFET
     List<BuffetEntity> findAll();
 
+    BuffetEntity findByName(String name);
 
 }
