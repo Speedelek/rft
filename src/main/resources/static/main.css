@@ -1,56 +1,59 @@
 .navbar {
-    margin-top:0%;
-    margin-left:0%;
-    margin-right:0%;
-    color:darkgrey;
+    margin-top:20px;
 }
 
 header h1 {
-    font-family: 'Exo', sans-serif;
-    font-size: 36px;
+    font-family: 'Calibri', sans-serif;
+    font-size: 38px;
 }
 
-p, address {
+p, address, section {
     font-family: 'Calibri', sans-serif;
 }
 
-
-
-
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
+address {
+    margin-top:20px;
 }
 
-li {
-    float: left;
-    border-right: 1px solid #bbb;
-}
-li:last-child{
-    border-right: none;
+#frmlogout {
+    display:inline;
 }
 
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 15px 32px;
-    text-decoration: none;
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 0 40px 0;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+.form-signin .checkbox {
+    font-weight: normal;
+}
+.form-signin .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+.form-signin input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-    background-color: #111;
-}
-
-.active {
-    background-color: #4CAF50;
-}
-
-article{
-
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: #c7b7d6;
 }

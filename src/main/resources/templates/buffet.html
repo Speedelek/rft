@@ -1,32 +1,16 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymleaf.org">
+<html lang="hu" layout:decorator="layouts/main" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title th:text="${pageTitle}">RFT title test</title>
-    
-    <link rel="stylesheet" th:href="@{main.css}" href="../static/main.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-
-    <<link href='https://fonts.googleapis.com/css?family=Calibri' rel='stylesheet' type='text/css' />
-    <link href='https://fonts.googleapis.com/css?family=Exo' rel='stylesheet' type='text/css' />
-
+    <title>termekek</title>
 </head>
 <body>
-<ul>
-    <li><a href="home.html">Home</a></li>
-    <li><a href="buffets.">Buffets</a></li>
-    <li><a href="products.">Products</a></li>
-    <li style="float:right"><a class="active" href="profile.">Profile</a></li>
-</ul>
 
-<div class="container">
+<div layout:fragment="content">
 
-    <article>
+    <h2>bufek</h2>
+
+    <article th:each="buffet : ${buffets}">
         <header>
             <h1 th:text="${buffet.name}">This is the buffet's name</h1>
         </header>
@@ -43,13 +27,6 @@
         </footer>
         <hr/>
     </article>
-
-    <ul></ul>
-    
-
-    <footer>
-        <p th:text="${footerText}">Powered by Me</p>
-    </footer>
 
 </div>
 

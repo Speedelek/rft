@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="hu" layout:decorator="layouts/main" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>termekek</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <h2>regisztracio</h2>
+
+    <form name="registration" th:action="@{/reg}" th:object="${user}" method="post" class="form-signin">
+        <h2 class="form-signin-heading">Kérlek regisztrálj</h2>
+        <input type="text" id="username" name="username" th:field="*{username}" class="form-control" placeholder="Felhasználói név"  />
+        <input type="password" id="password" name="password" th:field="*{password}"  class="form-control" placeholder="Jelszó" />
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Regisztráció</button>
+    </form>
+
+
+</div>
+
+</body>
+</html>
