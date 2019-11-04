@@ -1,16 +1,16 @@
-/*
 package com.buffet.buffet.entities.registration;
 
-import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.*;
+
 @Entity
-@Table( name = "registration.roles" )
+@Table( name = "roles" )
 public class Role {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue
     private Long id;
 
     private String role;
@@ -19,6 +19,10 @@ public class Role {
     private Set<User> users = new HashSet<User>();
 
     private Role(){} //
+
+    public Role(String role){
+        this.role=role;
+    }
 
     public Long getId() {
         return id;
@@ -49,4 +53,4 @@ public class Role {
         return "Role [id=" + id + ", role=" + role + "]";
     }
 
-}*/
+}

@@ -2,6 +2,7 @@ package com.buffet.buffet.controller;
 
 import com.buffet.buffet.entities.registration.User;
 import com.buffet.buffet.service.BuffetService;
+import com.buffet.buffet.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,21 +12,27 @@ import org.springframework.web.bind.annotation.*;
 public class HomeController {
 
     private BuffetService buffetService;
+    private UserService userService;
 
     @Autowired
     public void setBuffetService(BuffetService buffetService){ this.buffetService = buffetService; }
 
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
     @RequestMapping("")
-    public String home(Model model){
-        model.addAttribute("pageTitle", "Test title");
-        model.addAttribute("footerText", "testFooter");
+    public String home(){
+       // model.addAttribute("pageTitle", "Test title");
+       // model.addAttribute("footerText", "testFooter");
         //model.addAttribute("buffets", buffetService.getBuffetEntities());
         return "home";
     }
 
     @RequestMapping("/buffet")
-    public String buffet(Model model){
-        model.addAttribute("buffets", buffetService.getBuffetEntities());
+    public String buffet(){
+       // model.addAttribute("buffets", buffetService.getBuffetEntities());
         return "buffet";
     }
 
@@ -53,11 +60,12 @@ public class HomeController {
     }
 
     @PostMapping("/reg")
-    public String greetingSubmit(@ModelAttribute User user) {
+    public String reg(@ModelAttribute User user) {
         System.out.println("UJ USER");
-       // System.out.println(user.getUsername() + " --- " + user.getPassword());
+        System.out.println(user.getEmail() + " --- " + user.getPassword() + " --- " + user.getFullName());
 //		log.debug(user.getUsername());
 //		log.debug(user.getPassword());
+        userService.registerUser(user);
         return "auth/login";
     }
 

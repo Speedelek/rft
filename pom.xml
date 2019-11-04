@@ -58,6 +58,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
         </dependency>
         <!-- Spring Security -->
         <dependency>
@@ -72,7 +73,7 @@
 
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
-            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+            <artifactId>thymeleaf-extras-springsecurity4</artifactId>
         </dependency>
 
         <!--decorator-->
