@@ -16,8 +16,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class UserServiceImpl implements UserService, UserDetailsService  {
-
+public class UserServiceImpl implements UserService, UserDetailsService {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -69,5 +68,31 @@ public class UserServiceImpl implements UserService, UserDetailsService  {
 
         //return "ok";
     }
+
+	/*public String generateKey()
+    {
+		String key = "";
+		Random random = new Random();
+		char[] word = new char[16];
+		for (int j = 0; j < word.length; j++) {
+			word[j] = (char) ('a' + random.nextInt(26));
+		}
+		String toReturn = new String(word);
+		log.debug("random code: " + toReturn);
+		return new String(word);
+    }*/
+/*
+	@Override
+	public String userActivation(String code) {
+		User user = userRepository.findByActivation(code);
+		if (user == null)
+		    return "noresult";
+
+		//user.setEnabled(true);
+		//user.setActivation("");
+		userRepository.save(user);
+		return "ok";
+	}*/
+
 
 }

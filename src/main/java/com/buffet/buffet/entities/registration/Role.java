@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class Role {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String role;
@@ -18,7 +18,7 @@ public class Role {
     @ManyToMany( mappedBy = "roles")
     private Set<User> users = new HashSet<User>();
 
-    private Role(){} //
+    private Role(){}
 
     public Role(String role){
         this.role=role;

@@ -5,11 +5,11 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
+
 public interface BuffetRepository extends CrudRepository<BuffetEntity, Long> {
 
     //SELECT * FROM BUFFET
     List<BuffetEntity> findAll();
 
     BuffetEntity findByName(String name);
-
 }

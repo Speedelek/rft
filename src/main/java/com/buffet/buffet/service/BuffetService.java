@@ -7,10 +7,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
 @Service
 public class BuffetService {
 
-   /* private BuffetRepository buffetRepo;
+    private BuffetRepository buffetRepo;
 
     @Autowired
     public void setBuffetRepo(BuffetRepository buffetRepo){ this.buffetRepo = buffetRepo; }
@@ -19,8 +20,9 @@ public class BuffetService {
         return buffetRepo.findAll();
     }
 
-   public BuffetEntity getBuffetByName(String name){
+    public BuffetEntity getBuffetByName(String name){
         return buffetRepo.findByName(name);
-    }*/
+    }
 
 }
+

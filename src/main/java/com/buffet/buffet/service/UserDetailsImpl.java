@@ -11,6 +11,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 
+
 public class UserDetailsImpl implements UserDetails {
 
     private static final long serialVersionUID = 3185970362329652822L;
@@ -57,8 +58,6 @@ public class UserDetailsImpl implements UserDetails {
     }
 
     @Override
-    public boolean isEnabled() {
-        return true;
-    }
+    public boolean isEnabled() {return true;}
 
 }
