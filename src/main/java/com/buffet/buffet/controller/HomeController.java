@@ -2,6 +2,7 @@ package com.buffet.buffet.controller;
 
 import com.buffet.buffet.entities.registration.User;
 import com.buffet.buffet.service.BuffetService;
+import com.buffet.buffet.service.ProductService;
 import com.buffet.buffet.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +18,7 @@ public class HomeController {
 
     private BuffetService buffetService;
     private UserService userService;
+    private ProductService productService;
 
 
     @Autowired
@@ -27,6 +29,11 @@ public class HomeController {
     @Autowired
     public void setBuffetService(BuffetService buffetService){ this.buffetService = buffetService; }
 
+    @Autowired
+    public void setProductService(ProductService productService){
+        this.productService = productService;
+    }
+
 
     @RequestMapping("/")
     public String home(){
@@ -36,12 +43,12 @@ public class HomeController {
     @RequestMapping("/buffet")
     public String buffet(Model model){
         model.addAttribute("buffets", buffetService.getBuffetEntities());
-        System.out.println(model.addAttribute("buffets", buffetService.getBuffetEntities()));
         return "buffet";
     }
 
     @RequestMapping("/products")
-    public String products(){
+    public String products(Model model){
+        model.addAttribute("products", productService.getProduct());
         return "products";
     }
 

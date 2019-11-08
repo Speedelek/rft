@@ -48,4 +48,14 @@ public class BuffetEntity {
     public void setTeam(int team) {
         this.team = team;
     }
+
+    @Override
+    public String toString() {
+        return "BuffetEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", team=" + team +
+                '}';
+    }
 }
