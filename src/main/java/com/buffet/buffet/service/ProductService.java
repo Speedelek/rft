@@ -24,4 +24,8 @@ public class ProductService {
     public List<Product> getProductByKategoria(){
         return productRepository.findByKategoria(1);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 14567ad1adfe984c01fc49cff1f729dd41384226

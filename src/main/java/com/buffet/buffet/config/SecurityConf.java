@@ -46,7 +46,10 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .regexMatchers(".*\\.css$").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
+<<<<<<< HEAD
                 .antMatchers("/resources/**").permitAll()
+=======
+>>>>>>> 14567ad1adfe984c01fc49cff1f729dd41384226
                 .antMatchers(HttpMethod.GET,"/","/buffet","/products").permitAll()
                 .antMatchers("/registration").permitAll()
                 .antMatchers("/reg").permitAll()

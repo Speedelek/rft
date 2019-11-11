@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 html{ height:100%; }
 body{ min-height:100%; padding:0; margin:0; position:relative; }
 
@@ -9,6 +10,20 @@ footer{
     width:100%;
     height:100px;
 }
+=======
+*{
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    outline: none;
+}
+
+div#container{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+>>>>>>> 14567ad1adfe984c01fc49cff1f729dd41384226
 .navbar {
     margin-top:20px;
 }
@@ -24,8 +39,13 @@ p, address, section {
 
 address {
     margin-top:20px;
+<<<<<<< HEAD
 
 }
+=======
+}
+
+>>>>>>> 14567ad1adfe984c01fc49cff1f729dd41384226
 li.dropdown {
     display: inline-block;
 }
@@ -58,6 +78,10 @@ li.dropdown {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 14567ad1adfe984c01fc49cff1f729dd41384226
 #frmlogout {
     display:inline;
 }
