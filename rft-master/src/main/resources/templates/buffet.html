@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="layouts/header :: header"></head>
+<body>
+
+
+
+<div id="container">
+
+    <nav th:replace="layouts/navbar :: navbar-default"></nav>
+
+    <h2>bufek</h2>
+
+    <article th:each="buffet : ${buffets}">
+        <header>
+            <h1 th:text="${buffet.name}">This is the buffet's name</h1>
+        </header>
+
+        <section th:text="${buffet.address}">
+            <p>This is the buffet's address</p>
+            <p></p>
+        </section>
+
+
+        <address>
+            Team: <span th:text="${buffet.team}">teamNumber</span>
+        </address>
+        <hr/>
+    </article>
+
+</div>
+<footer>
+    <HR>
+    Készítette: Cseke Tamás, Kákóczky Ákos, Oszkocsil Krisztián
+</footer>
+
+</body>
+</html>
