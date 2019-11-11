@@ -48,7 +48,7 @@ public class HomeController {
 
     @RequestMapping("/products")
     public String products(Model model){
-        model.addAttribute("products", productService.getProduct());
+        model.addAttribute("products", productService.getProductByKategoria());
         return "products";
     }
 

@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="hu" layout:decorator="layouts/main" xmlns:layout="http://www.w3.org/1999/xhtml"
+<html lang="hu" xmlns:layout="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <title>home</title>
-</head>
+
+<head th:replace="layouts/header :: header"></head>
 <body>
 
-<div layout:fragment="content">
+
+
+<div id="container">
+
+    <nav th:replace="layouts/navbar :: navbar-default"></nav>
 
     <h2>home</h2>
 

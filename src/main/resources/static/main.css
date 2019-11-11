@@ -1,3 +1,15 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    outline: none;
+}
+
+div#container{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 .navbar {
     margin-top:20px;
 }
@@ -13,6 +25,39 @@ p, address, section {
 
 address {
     margin-top:20px;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+    text-decoration: none;
+}
+.dropdown-content a:active {
+    text-decoration: none;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
 #frmlogout {
