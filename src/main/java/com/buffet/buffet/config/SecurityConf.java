@@ -39,14 +39,15 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
     }
 
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .regexMatchers(".*\\.css$").permitAll()
+
+               // .regexMatchers(".*\\.css$").permitAll()
+               // .regexMatchers(".*\\.png$").permitAll()
+                .antMatchers("/static/**").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/resources/**").permitAll()
                 .antMatchers(HttpMethod.GET,"/","/buffet","/products").permitAll()
                 .antMatchers("/registration").permitAll()
                 .antMatchers("/reg").permitAll()
