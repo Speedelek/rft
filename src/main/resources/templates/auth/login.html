@@ -1,13 +1,13 @@
-picture.js<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="hu"  xmlns:layout="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head th:replace="layouts/header :: header"></head>
 <body>
-
+<div class="content">
 <nav th:replace="layouts/navbar :: navbar-default"></nav>
 
-<div>
+
 
     <form name="login" th:action="@{/login}" method="post" class="form-signin">
         <h2 class="form-signin-heading">Kérlek jelentkezz be</h2>
@@ -26,11 +26,9 @@ picture.js<!DOCTYPE html>
 
     <a href="/registration">Regisztrácio</a>
 
+
+    <footer class="footer" th:replace="layouts/footer :: footer"></footer>
 </div>
-<footer>
-    <HR>
-    Készítette: Cseke Tamás, Kákóczky Ákos, Oszkocsil Krisztián
-</footer>
 
 </body>
 </html>

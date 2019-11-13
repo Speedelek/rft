@@ -3,21 +3,18 @@
       xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head th:replace="layouts/header :: header"></head>
-<body>
+<body style="background-color:#F5F5F5;">
 
 
 
-<div id="container">
+<div id="container" class="content">
 
 
     <nav th:replace="layouts/navbar :: navbar-default"></nav>
 
-    <!-- <CENTER><IMG SRC="../static/images/buffet.jpg" > </CENTER>-->
+    <CENTER><IMG  SRC="/static/images/buffet1.jpg" class="buffet" alt="bufe" width="100%">  </CENTER>
 
-
-    <img src="static/images/logo_small.png" class="img-rounded" alt="Cinque Terre" width="304" height="236">
-
-    <CENTER><H1>Kedves Látogató!</H1></CENTER>
+    <H1>Kedves Látogató!</H1>
 
 
 
@@ -55,10 +52,9 @@
 
     <P style="font-size:25px;"> A keresés részbe a beírt termékeket listázza ki, melyek mellett ott lesz a büfék neve,címe
         és az aktuális büfében vett ára.
-
+    <HR>
+<footer th:replace="layouts/footer :: footer"></footer>
 </div>
 
-    <HR>
-<div th:replace="layouts/footer :: footer"></div>
 </body>
 </html>

@@ -1,16 +1,28 @@
-html{ height:100%; }
-body{ min-height:100%; padding:0; margin:0; position:relative; }
+html{ height:100%;
+        width: 95%;
+    }
+body{ min-height:100%; padding:0; margin:0; position:relative;
+    background-color: #F1DAC4}
 
-body::after{ content:''; display:block; height:100px; }
+
 
 footer{
     position:absolute;
     bottom:0;
     width:100%;
-    height:100px;
 }
-.navbar {
-    margin-top:20px;
+
+
+.inline{
+    display: inline-block;
+    padding: 50px;
+
+}
+
+div.content{
+
+    margin-left: 5%;
+    /*margin-right: 5%*/
 }
 
 header h1 {
@@ -26,8 +38,39 @@ address {
     margin-top:20px;
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#navbar{
+    overflow: hidden;
+    top: 0;
+    position: -webkit-sticky;
+    position: sticky;
+}
+
+.dropbtn {
+    border: none;
+    outline: none;
+}
+
+
 li.dropdown {
     display: inline-block;
+    overflow: hidden;
 }
 
 .dropdown-content {
@@ -40,6 +83,7 @@ li.dropdown {
 }
 
 .dropdown-content a {
+    float: none;
     color: black;
     padding: 12px 16px;
     text-decoration: none;
@@ -58,6 +102,14 @@ li.dropdown {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+
+
+
+
+
+
+
 #frmlogout {
     display:inline;
 }

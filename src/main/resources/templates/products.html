@@ -3,15 +3,18 @@
       xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head th:replace="layouts/header :: header"></head>
-<body>
 
 
+<div id="container" class="content">
 
-<div id="container">
 
     <nav th:replace="layouts/navbar :: navbar-default"></nav>
 
-    <article th:each="product : ${products}">
+    <div class="wrapper">
+        <div class="main">
+
+
+    <article class="inline" th:each="product : ${products}">
         <header>
             <h1 th:text="${product.name}">Termek neve</h1>
         </header>
@@ -26,12 +29,27 @@
             kategoria: <span th:text="${product.kategoria}">kategoria</span>
         </address>
 
-        <hr/>
     </article>
+</div>
+        <div class="sidebar">
+            Kategoriak:
+            <ul class="ulsidebar">
+           <li> <a href="/products">Szendvics</a></li>
+                <li><a href="/products">Hamburger</a></li>
+                <li><a href="/products">Pizza</a></li>
+                <li><a href="/products">Sos</a></li>
+                <li><a href="/products">Edes</a></li>
+                <li><a href="/products">Udito</a></li>
+                <li><a href="/products">Kave</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+<footer th:replace="layouts/footer :: footer"></footer>
 
 </div>
-<div th:replace="layouts/footer :: footer"></div>
-
-
 </body>
 </html>

@@ -7,13 +7,17 @@
 
 
 
-<div id="container">
+<div id="container" class="content">
+
+
 
     <nav th:replace="layouts/navbar :: navbar-default"></nav>
 
-    <h2>bufek</h2>
+    <h2>Itt találod a büféket.</h2>
+
 
     <article th:each="buffet : ${buffets}">
+        <hr/>
         <header>
             <h1 th:text="${buffet.name}">This is the buffet's name</h1>
         </header>
@@ -27,12 +31,14 @@
         <address>
             Team: <span th:text="${buffet.team}">teamNumber</span>
         </address>
-        <hr/>
+
     </article>
 
+
+    <br>
+    <br>
+
+    <footer th:replace="layouts/footer :: footer"></footer>
 </div>
-
-    <div th:replace="layouts/footer :: footer"></div>
-
 </body>
 </html>
