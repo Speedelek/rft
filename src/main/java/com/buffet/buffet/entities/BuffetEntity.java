@@ -14,7 +14,7 @@ public class BuffetEntity {
     private String name;
     @Column(name = "cim")
     private String address;
-    @Column(name = "csapat")
+    @Column(name = "csapat_id")
     private int team;
 
     public long getId() {

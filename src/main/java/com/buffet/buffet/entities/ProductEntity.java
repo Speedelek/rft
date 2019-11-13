@@ -14,7 +14,7 @@ public class ProductEntity  {
     private String name;
     @Column(name = "ar")
     private int price;
-    @Column(name = "kategoria")
+    @Column(name = "kategoria_id")
     private int category;
 
     public int getId() {
