@@ -9,22 +9,21 @@ footer{
     width:100%;
     height:100px;
 }
+.navbar {
+    margin-top:20px;
+}
 
 header h1 {
     font-family: 'Calibri', sans-serif;
     font-size: 38px;
-    margin-left: 50px;
-    margin-right: 50px;
 }
 
 p, address, section {
     font-family: 'Calibri', sans-serif;
-    margin-left: 50px;
-    margin-right: 50px;
 }
 
 address {
-    margin-top:0px;
+    margin-top:20px;
 
 }
 li.dropdown {
@@ -100,11 +99,4 @@ li.dropdown {
 
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
     border-color: #c7b7d6;
-}
-
-
-.navbar {
-    margin-top:0px;
-    margin-right: 0px;
-    margin-left: 0px;
 }
