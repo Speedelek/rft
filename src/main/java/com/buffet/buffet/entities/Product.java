@@ -17,7 +17,7 @@ public class Product {
     @Column(name = "ar")
     private int ar;
 
-    @Column(name = "kategoria")
+    @Column(name = "kategoria_id")
     private int kategoria;
 
     public long getId() {
