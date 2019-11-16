@@ -1,12 +1,15 @@
 package com.buffet.buffet.controller;
 
 import com.buffet.buffet.entities.registration.User;
+import com.buffet.buffet.repository.UserRepository;
 import com.buffet.buffet.service.BuffetService;
 import com.buffet.buffet.service.ProductService;
 import com.buffet.buffet.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -54,7 +57,10 @@ public class HomeController {
 
 
     @RequestMapping("/profile")
-    public String profile(){
+    public String profile(Model model, @AuthenticationPrincipal UserDetails currentUser){
+       // model.addAttribute("user", userService.findByUsername(username));
+        User user = (User) userService.findByUsername(currentUser.getUsername());
+        model.addAttribute("user", user);
         return "profile";
     }
 
@@ -81,11 +87,5 @@ public class HomeController {
         userService.registerUser(user);
         return "auth/login";
     }
-
-	/* @RequestMapping(path = "/activation/{code}", method = RequestMethod.GET)
-	    public String activation(@PathVariable("code") String code, HttpServletResponse response) {
-		String result = userService.userActivation(code);
-		return "auth/login";
-	 }*/
 
 }

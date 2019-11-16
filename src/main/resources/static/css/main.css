@@ -42,37 +42,16 @@ address {
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #nav_bar{
     position: sticky;
 }
 
 
-
-
 .navbar {
     top: 0;
     background-color: black;
-    /*height: 50px;*/
     width: 100%;
-
-
 }
-
 
 .navbar ul li {
     position: relative;
@@ -120,48 +99,10 @@ a:hover:not(.active):not(#reflink) {
     display: block;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .content{
     font-family: "Roboto Light" ;
 
 }
-
-
-
-
 
 #frmlogout {
     display:inline;
