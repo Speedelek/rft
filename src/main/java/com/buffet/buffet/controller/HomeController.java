@@ -75,7 +75,7 @@ public class HomeController {
     public String reg(@ModelAttribute User user) {
         log.info("Uj user!");
 //		emailService.sendMessage(user.getEmail());
-        log.debug(user.getFullName());
+        log.debug(user.getUsername());
         log.debug(user.getEmail());
         log.debug(user.getPassword());
         userService.registerUser(user);

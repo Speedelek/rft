@@ -13,16 +13,20 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column( unique=true, nullable=false )
+    @Column( unique=true, nullable=false, name = "email" )
     private String email;
 
-    @Column( nullable=false )
+
+    @Column( nullable=false, name = "password")
     private String password;
 
-    private String fullName;
+    @Column(name = "username")
+    private String username;
 
+    @Column(name = "activation")
     private String activation;
 
+    @Column(name = "enabled")
     private Boolean enabled;
 
     @ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.EAGER )
@@ -59,12 +63,12 @@ public class User {
         this.password = password;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public Set<Role> getRoles() {

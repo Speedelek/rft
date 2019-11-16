@@ -5,7 +5,7 @@
 <head th:replace="layouts/header :: header"></head>
 <body>
 
-
+<div th:replace="layouts/jumpTopBtn :: jumpTop"></div>
 
 <div id="container" class="content">
 
@@ -13,7 +13,6 @@
 
     <nav th:replace="layouts/navbar :: navbar-default"></nav>
 
-    <h2>Itt találod a büféket.</h2>
 
 
     <article th:each="buffet : ${buffets}">
@@ -39,6 +38,7 @@
     <br>
 
     <footer th:replace="layouts/footer :: footer"></footer>
+
 </div>
 </body>
 </html>

@@ -16,6 +16,7 @@
 
     <article class="inline" th:each="product : ${products}">
         <header>
+            <IMG  SRC="/static/images/snack.jpg"  height="150px" width="150px">
             <h1 th:text="${product.name}">Termek neve</h1>
         </header>
 
@@ -31,19 +32,9 @@
 
     </article>
 </div>
-        <div class="sidebar">
-            Kategoriak:
-            <ul class="ulsidebar">
-           <li> <a href="/products">Szendvics</a></li>
-                <li><a href="/products">Hamburger</a></li>
-                <li><a href="/products">Pizza</a></li>
-                <li><a href="/products">Sos</a></li>
-                <li><a href="/products">Edes</a></li>
-                <li><a href="/products">Udito</a></li>
-                <li><a href="/products">Kave</a></li>
-            </ul>
-        </div>
+
     </div>
+    <div th:replace="layouts/jumpTopBtn :: jumpTop "></div>
 
     <br>
     <br>

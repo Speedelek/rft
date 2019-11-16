@@ -1,8 +1,11 @@
 html{ height:100%;
         width: 95%;
+    scroll-behavior: smooth;
+
     }
 body{ min-height:100%; padding:0; margin:0; position:relative;
-    background-color: #F1DAC4}
+    background-color: #F1DAC4;
+}
 
 
 
@@ -20,7 +23,7 @@ footer{
 }
 
 div.content{
-
+    font-family: "Roboto Light" ;
     margin-left: 5%;
     /*margin-right: 5%*/
 }
@@ -54,50 +57,64 @@ address {
 
 
 
-
-#navbar{
-    overflow: hidden;
-    top: 0;
-    position: -webkit-sticky;
+#nav_bar{
     position: sticky;
 }
 
-.dropbtn {
-    border: none;
-    outline: none;
+
+
+
+.navbar {
+    top: 0;
+    background-color: black;
+    /*height: 50px;*/
+    width: 100%;
+
+
 }
 
 
-li.dropdown {
+.navbar ul li {
+    position: relative;
+    float: left;
+    list-style-type: none;
+    width: 175px;
+    text-align: center;
+}
+
+.navbar ul li a {
+    position: relative;
+    text-decoration: none;
+    color: white;
+    line-height: 50px;
+    display: block;
+}
+
+a:hover:not(.active):not(#reflink) {
+    background-color: teal;
+    color: gold;
+}
+
+
+.dropdown {
+    position: static;
     display: inline-block;
-    overflow: hidden;
+    height: 50px;
 }
 
 .dropdown-content {
+    overflow: visible;
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    background-color: #0a1010;
+    min-width: 140px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    /*padding: 12px 16px;*/
+    z-index: 10;
+    opacity: .8;
 }
 
-.dropdown-content a {
-    float: none;
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
 
-.dropdown-content a:hover {
-    background-color: #f1f1f1;
-    text-decoration: none;
-}
-.dropdown-content a:active {
-    text-decoration: none;
-}
 
 .dropdown:hover .dropdown-content {
     display: block;
@@ -105,6 +122,42 @@ li.dropdown {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.content{
+    font-family: "Roboto Light" ;
+
+}
 
 
 
@@ -151,4 +204,21 @@ li.dropdown {
 
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
     border-color: #c7b7d6;
+}
+
+.goToTop{
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    bottom: 50px;
+    right: 50px;
+
+    border-radius: 10px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    padding: 0;
+    border: 0;
+
 }
