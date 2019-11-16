@@ -1,0 +1,28 @@
+/*
+.profile{
+    padding:5%;
+}
+.profile .img{
+    text-align:center;
+}
+.profile .details{
+    border-left:3px solid #ded4da;
+}
+.profile .details p{
+    font-size:15px;
+    font-weight:bold;
+}*/
+
+.container{
+    padding-top: 30px;
+}
+
+.profil_image{
+    max-width: 60%;
+}
+
+#editbtn{
+    margin-top: 20px;
+    max-width: 250px;
+    max-height: 40px;
+}
