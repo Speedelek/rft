@@ -24,4 +24,6 @@ public class ProductService {
     public List<Product> getProductByKategoria(){
         return productRepository.findByKategoria(1);
     }
+
+    public List<Product> getProductByBuffetId(String buffetId) {return productRepository.findProductByBuffetId(buffetId);}
 }

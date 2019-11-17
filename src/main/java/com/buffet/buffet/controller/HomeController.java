@@ -94,4 +94,15 @@ public class HomeController {
         return "auth/login";
     }
 
+
+    @RequestMapping("/buffet/{buffetId}")
+    public String singleBuffet(Model model, @PathVariable(value = "buffetId") String buffetId) throws Exception{
+        if(buffetId == null) throw new Exception("Nincs id");
+        model.addAttribute("products", productService.getProductByBuffetId(buffetId));
+
+        Long id = Long.parseLong(buffetId);
+        model.addAttribute("actualBuffet", buffetService.getActualBuffet(id));
+        return "buffetProducts";
+    }
+
 }
