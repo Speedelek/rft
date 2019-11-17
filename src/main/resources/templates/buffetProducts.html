@@ -21,9 +21,8 @@
                     <h1 th:text="${product.name}">Termek neve</h1>
                 </header>
 
-                <section th:text="${product.ar}">
-                    <p>Termek ara</p>
-                    <p></p>
+                <section>
+                    <p th:text="${product.ar} + 'ft'">Termek ara</p>
                 </section>
 
 

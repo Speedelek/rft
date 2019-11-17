@@ -49,13 +49,6 @@ public class HomeController {
         return "buffet";
     }
 
-    @RequestMapping("/products")
-    public String products(Model model){
-        model.addAttribute("products", productService.getProductByKategoria());
-        return "products";
-    }
-
-
     @RequestMapping("/profile")
     public String profile(Model model, @AuthenticationPrincipal UserDetails currentUser){
        // model.addAttribute("user", userService.findByUsername(username));
@@ -103,6 +96,13 @@ public class HomeController {
         Long id = Long.parseLong(buffetId);
         model.addAttribute("actualBuffet", buffetService.getActualBuffet(id));
         return "buffetProducts";
+    }
+
+    @RequestMapping("/products/{category}")
+    public String products(Model model, @PathVariable(value = "category") String category) throws Exception{
+        Integer categoryInt = Integer.parseInt(category);
+        model.addAttribute("products", productService.getProductByKategoria(categoryInt));
+        return "products";
     }
 
 }

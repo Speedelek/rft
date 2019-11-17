@@ -18,7 +18,6 @@
     <article th:each="buffet : ${buffets}">
         <hr/>
         <header>
-            <!--<a th:href="@{'/category/edit/' + ${category.idCategory}}-->
             <a th:href="@{'buffet/' + ${buffet.id}}">
             <h1 th:text="${buffet.name}">This is the buffet's name</h1>
             </a>
