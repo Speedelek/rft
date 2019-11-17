@@ -64,6 +64,12 @@ public class HomeController {
         return "profile";
     }
 
+    @RequestMapping("/profile_edit")
+    public String profileEdit(){
+        return "profile_edit";
+    }
+
+
 
     @RequestMapping("/admin_page")
     public String adminPage(){

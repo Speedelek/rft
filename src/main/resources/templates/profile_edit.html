@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="hu"  xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="layouts/header :: header"></head>
+<body>
+
+
+<div id="container" class="content">
+
+    <nav th:replace="layouts/navbar :: navbar-default"></nav>
+
+    <div class="row">
+        <div class="col-md-10 ">
+            <form class="form-horizontal">
+                <fieldset>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="Full name">Teljes név</label>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-user">
+                                    </i>
+                                </div>
+                                <input id="Full name" name="ull name" type="text" placeholder="Teljes n" class="form-control input-md">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="Upload photo">Fotó feltöltése</label>
+                        <div class="col-md-4">
+                            <input id="Upload photo" name="Upload photo" class="input-file" type="file">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="Date Of Birth">Születési idő</label>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-birthday-cake"></i>
+                                </div>
+                                <input id="Date Of Birth" name="Date Of Birth" type="text" placeholder="Date Of Birth" class="form-control input-md">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="Phone number ">Telefonszám</label>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-mobile fa-1x" style="font-size: 20px;"></i>
+                                </div>
+                                <input id="Phone number " name="Phone number " type="text" placeholder="Phone number " class="form-control input-md">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="Email Address">Email cím</label>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-envelope-o"></i>
+                                </div>
+                                <input id="Email Address" name="Email Address" type="text" placeholder="Email Address" class="form-control input-md">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="Adress">Lakcím</label>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-sticky-note-o"></i>
+                                </div>
+                                <input id="Adress" name="Adress" type="text" placeholder="Adress" class="form-control input-md">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="Overview">Megjegyzés</label>
+                        <div class="col-md-4">
+                            <textarea class="form-control" rows="5"  id="Overview" name="Overview">Megjegyzés</textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" ></label>
+                        <div class="col-md-4">
+                            <a id="savebtn" class="btn btn-info btn-primary center-block" href="/profile" role="button">Mentés</a>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+        </div>
+
+
+    </div>
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+
+
+    <footer th:replace="layouts/footer :: footer"></footer>
+</div>
+</body>
+</html>

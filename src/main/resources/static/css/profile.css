@@ -17,12 +17,19 @@
     padding-top: 30px;
 }
 
+.row{
+    padding-top: 30px;
+}
+
 .profil_image{
     max-width: 60%;
 }
 
 #editbtn{
     margin-top: 20px;
-    max-width: 250px;
-    max-height: 40px;
+    max-width: 130px;
+}
+#savebtn{
+
+    max-width: 130px;
 }
