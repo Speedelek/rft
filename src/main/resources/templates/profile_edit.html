@@ -22,7 +22,7 @@
                                     <i class="fa fa-user">
                                     </i>
                                 </div>
-                                <input id="Full name" name="ull name" type="text" placeholder="Teljes n" class="form-control input-md">
+                                <input id="Full name" name="ull name" type="text" placeholder="Teljes név" class="form-control input-md">
                             </div>
                         </div>
                     </div>
@@ -35,13 +35,31 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="Date Of Birth">Születési idő</label>
+                        <label class="col-md-4 control-label" for="datepicker">Születési idő</label>
                         <div class="col-md-4">
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <i class="fa fa-birthday-cake"></i>
                                 </div>
-                                <input id="Date Of Birth" name="Date Of Birth" type="text" placeholder="Date Of Birth" class="form-control input-md">
+                                <input id="datepicker" width="270" />
+                                <script>
+                                    $('#datepicker').datepicker({
+                                        uiLibrary: 'bootstrap'
+                                    }).attr('readonly',true);
+                                </script>
+<!--                                <input id="Date Of Birth" name="Date Of Birth" type="text" placeholder="Date Of Birth" class="form-control input-md">-->
+                                <!--<div class='input-group date' id='datetimepicker3'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
+                                </div>
+                            </div>
+                            <script>
+                                $('#datepicker').datepicker({
+                                    uiLibrary: 'bootstrap'
+                                });
+                            </script>-->
                             </div>
                         </div>
                     </div>
@@ -54,7 +72,7 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-mobile fa-1x" style="font-size: 20px;"></i>
                                 </div>
-                                <input id="Phone number " name="Phone number " type="text" placeholder="Phone number " class="form-control input-md">
+                                <input id="Phone number " name="Phone number " type="text" placeholder="Telefonszám " class="form-control input-md">
                             </div>
                         </div>
                     </div>
@@ -67,7 +85,7 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-envelope-o"></i>
                                 </div>
-                                <input id="Email Address" name="Email Address" type="text" placeholder="Email Address" class="form-control input-md">
+                                <input id="Email Address" name="Email Address" type="text" placeholder="Email cím" class="form-control input-md">
                             </div>
                         </div>
                     </div>
@@ -80,7 +98,7 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-sticky-note-o"></i>
                                 </div>
-                                <input id="Adress" name="Adress" type="text" placeholder="Adress" class="form-control input-md">
+                                <input id="Adress" name="Adress" type="text" placeholder="Lakcím" class="form-control input-md">
                             </div>
                         </div>
                     </div>
@@ -89,7 +107,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="Overview">Megjegyzés</label>
                         <div class="col-md-4">
-                            <textarea class="form-control" rows="5"  id="Overview" name="Overview">Megjegyzés</textarea>
+                            <textarea class="form-control" rows="5"  id="Overview" name="Overview" placeholder="Megjegyzés"></textarea>
                         </div>
                     </div>
 
