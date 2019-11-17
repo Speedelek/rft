@@ -42,25 +42,35 @@
                                 <div class="clearfix"></div>
                                 <hr style="margin:5px 0 5px 0;">
 
-                                <div class="col-sm-5 col-xs-6 tital " >Teljes név:</div><div class="col-sm-7"> </div>
+                                <div class="col-sm-5 col-xs-6 tital " >Teljes név:</div><span th:text="${user.fullname}"></span><div class="col-sm-7"> </div>
                                 <div class="clearfix"></div>
                                 <div class="bot-border"></div>
 
-                                <div class="col-sm-5 col-xs-6 tital " >Születési dátum</div><div class="col-sm-7"></div>
-
-                                <div class="clearfix"></div>
-                                <div class="bot-border"></div>
-
+                                <div class="col-sm-5 col-xs-6 tital " >Születési idő:</div><span th:text="${user.birth_date}"></span><div class="col-sm-7"></div>
 
                                 <div class="clearfix"></div>
                                 <div class="bot-border"></div>
 
-                                <div class="col-sm-5 col-xs-6 tital " >Születési hely:</div><div class="col-sm-7"></div>
 
                                 <div class="clearfix"></div>
                                 <div class="bot-border"></div>
 
-                                <div class="col-sm-5 col-xs-6 tital " >Hobbi:</div><div class="col-sm-7"></div>
+                                <div class="col-sm-5 col-xs-6 tital " >Telefonszám:</div><span th:text="${user.phone_number}"></span><div class="col-sm-7"></div>
+
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+                                <div class="col-sm-5 col-xs-6 tital " >Email cím:</div><span th:text="${user.email}"></span><div class="col-sm-7"></div>
+
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+                                <div class="col-sm-5 col-xs-6 tital " >Lakcím:</div><span th:text="${user.address}"></span><div class="col-sm-7"></div>
+
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+                                <div class="col-sm-5 col-xs-6 tital " >Megjegyzés:</div><span th:text="${user.remark}"></span><div class="col-sm-7"></div>
 
                                 <div class="clearfix"></div>
                                 <div class="bot-border"></div>

@@ -29,6 +29,21 @@ public class User {
     @Column(name = "enabled")
     private Boolean enabled;
 
+    @Column(name = "fullname")
+    private String fullname;
+
+    @Column(name = "phone_number")
+    private String phone_number;
+
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "remark")
+    private String remark;
+
+    @Column(name = "birth_date")
+    private String birth_date;
+
     @ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.EAGER )
     @JoinTable(
             name = "users_roles",
@@ -77,6 +92,46 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public String getBirth_date() {
+        return birth_date;
+    }
+
+    public void setBirth_date(String birth_date) {
+        this.birth_date = birth_date;
     }
 
 	/*
