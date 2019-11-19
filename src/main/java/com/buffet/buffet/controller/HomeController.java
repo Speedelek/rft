@@ -49,13 +49,6 @@ public class HomeController {
         return "buffet";
     }
 
-    @RequestMapping("/products")
-    public String products(Model model){
-        model.addAttribute("products", productService.getProductByKategoria());
-        return "products";
-    }
-
-
     @RequestMapping("/profile")
     public String profile(Model model, @AuthenticationPrincipal UserDetails currentUser){
        // model.addAttribute("user", userService.findByUsername(username));
@@ -92,6 +85,24 @@ public class HomeController {
         log.debug(user.getPassword());
         userService.registerUser(user);
         return "auth/login";
+    }
+
+
+    @RequestMapping("/buffet/{buffetId}")
+    public String singleBuffet(Model model, @PathVariable(value = "buffetId") String buffetId) throws Exception{
+        if(buffetId == null) throw new Exception("Nincs id");
+        model.addAttribute("products", productService.getProductByBuffetId(buffetId));
+
+        Long id = Long.parseLong(buffetId);
+        model.addAttribute("actualBuffet", buffetService.getActualBuffet(id));
+        return "buffetProducts";
+    }
+
+    @RequestMapping("/products/{category}")
+    public String products(Model model, @PathVariable(value = "category") String category) throws Exception{
+        Integer categoryInt = Integer.parseInt(category);
+        model.addAttribute("products", productService.getProductByKategoria(categoryInt));
+        return "products";
     }
 
 }
