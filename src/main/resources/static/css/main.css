@@ -1,22 +1,22 @@
 
 :root{
 
-     --dark: black;
-     --Light: #fffbfc;
+    --dark: black;
+    --Light: #fffbfc;
 
-     --backg: #c0d6df;
+    --backg: #c0d6df;
 
-     --hover:#30332e;
+    --hover:#30332e;
 
-     --hover-contrast: #30bced;
+    --hover-contrast: #30bced;
 
- }
+}
 
 html{ height:100%;
-        width: 95%;
+    width: 95%;
     scroll-behavior: smooth;
 
-    }
+}
 body{ min-height:100%; padding:0; margin:0; position:relative;
     background-color: var(--backg);
 }
