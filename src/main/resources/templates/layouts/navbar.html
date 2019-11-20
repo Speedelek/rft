@@ -32,9 +32,13 @@
 
 
     <div class="navbar-text navbar-right" style="color: #F5F5F5;line-height: 0px;text-align: center">
-        Üdvözlünk <span sec:authentication="name">Anonymous </span>
+        Üdvözlünk
         <form sec:authorize="isAuthenticated()" id="frmlogout" th:action="@{/logout}" method="post" class="form-inline">
+            <span sec:authentication="name"></span>
             | <a href="javascript:{}" onclick="document.getElementById('frmlogout').submit(); return false;">Kijelentkezés</a>
+        </form>
+        <form sec:authorize="!isAuthenticated()" id="frmlogin" method="post" class="form-inline">
+            | <a href="javascript:{}" onclick="document.getElementById('frmlogin').submit(); return false;">Bejelentkezés</a>
         </form>
 
     </div>
