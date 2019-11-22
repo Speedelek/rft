@@ -1,7 +1,7 @@
 package com.buffet.buffet.controller;
 
+import com.buffet.buffet.entities.registration.Role;
 import com.buffet.buffet.entities.registration.User;
-import com.buffet.buffet.repository.UserRepository;
 import com.buffet.buffet.service.BuffetService;
 import com.buffet.buffet.service.ProductService;
 import com.buffet.buffet.service.UserService;
@@ -38,8 +38,10 @@ public class HomeController {
     }
 
 
+
     @RequestMapping("/")
     public String home(){
+
         return "home";
     }
 
@@ -58,8 +60,40 @@ public class HomeController {
     }
 
     @RequestMapping("/profile_edit")
-    public String profileEdit(){
+    public String profileEdit(Model model, @AuthenticationPrincipal UserDetails currentUser){
+        User user = (User) userService.findByUsername(currentUser.getUsername());
+        model.addAttribute("user", user);
         return "profile_edit";
+    }
+
+    @PostMapping("/delete")
+    public String delete(@AuthenticationPrincipal UserDetails currentUser) {
+        User user = (User) userService.findByUsername(currentUser.getUsername());
+       // usersRoleSercive.deleteUsersRole(user);
+        Long id = user.getId();
+        userService.deleteById(Long.valueOf(id));
+        System.out.println("delete" + user);
+        return "auth/login";
+    }
+    @PostMapping("/update")
+    public String update( @ModelAttribute User user ,@AuthenticationPrincipal UserDetails currentUser) {
+        User currUser = (User) userService.findByUsername(currentUser.getUsername());
+        System.out.println("update elott" + currUser);
+        userService.deleteById(Long.valueOf(currUser.getId()));
+        System.out.println("delete" + currUser);
+        System.out.println("user" + user);
+        userService.userCheck(user);
+        userService.updateUser(user);
+//        currUser.setUsername(user.getUsername());
+//        currUser.setEmail(user.getEmail());
+//        currUser.setPassword(user.getPassword());
+//        currUser.setFullname(user.getFullname());
+//        currUser.setAddress(user.getAddress());
+//        currUser.setBirth_date(user.getBirth_date());
+//        currUser.setPhone_number(user.getPhone_number());
+//        currUser.setRemark(user.getRemark());
+        System.out.println("update utan" + currUser);
+        return "profile";
     }
 
 
@@ -86,7 +120,6 @@ public class HomeController {
         userService.registerUser(user);
         return "auth/login";
     }
-
 
     @RequestMapping("/buffet/{buffetId}")
     public String singleBuffet(Model model, @PathVariable(value = "buffetId") String buffetId) throws Exception{

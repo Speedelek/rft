@@ -1,5 +1,6 @@
 package com.buffet.buffet.entities.registration;
 
+import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -44,7 +45,7 @@ public class User {
     @Column(name = "birth_date")
     private String birth_date;
 
-    @ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.EAGER )
+    @ManyToMany( cascade = CascadeType.REFRESH, fetch = FetchType.EAGER )
     @JoinTable(
             name = "users_roles",
             joinColumns = {@JoinColumn(name="user_id")},
@@ -151,6 +152,11 @@ public class User {
 		this.activation = activation;
 	}*/
 
+    @PreRemove
+    private void deleteRoles() {
+
+    }
+
     public void addRoles(String roleName) {
         if (this.roles == null || this.roles.isEmpty())
             this.roles = new HashSet<>();
@@ -159,8 +165,18 @@ public class User {
 
     @Override
     public String toString() {
-        return "User [id=" + id + ", email=" + email + ", password=" + password + "]";
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", username='" + username + '\'' +
+                ", activation='" + activation + '\'' +
+                ", enabled=" + enabled +
+                ", fullname='" + fullname + '\'' +
+                ", phone_number='" + phone_number + '\'' +
+                ", address='" + address + '\'' +
+                ", remark='" + remark + '\'' +
+                ", birth_date='" + birth_date + '\'' +
+                '}';
     }
-
-
 }
