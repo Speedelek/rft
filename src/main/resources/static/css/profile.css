@@ -1,5 +1,8 @@
 .container{
     padding-top: 30px;
+
+}
+#profile_box{
 }
 
 .row{
@@ -17,5 +20,9 @@
 #savebtn{
 
     max-width: 130px;
+}
+
+#deletebtn{
+    margin-top: 10px;
 }
 
