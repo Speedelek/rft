@@ -185,3 +185,9 @@ a:hover:not(.active):not(#reflink) {
     border: 0;
 
 }
+
+#profile_edit_error {
+    max-height: 20px;
+    text-align: center;
+    /*margin: 0;*/
+}

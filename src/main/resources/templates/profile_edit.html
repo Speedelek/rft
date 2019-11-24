@@ -29,9 +29,12 @@
                         </div>
                     </div>
 
+
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="password">Jelszó név</label>
+                        <label class="col-md-4 control-label" for="password">Jelszó</label>
                         <div class="col-md-4">
+                            <span id="profile_edit_error" th:if="${errorMessage}" style="color:red;font-weight:bold"
+                                 role="alert" th:text="${errorMessage}"></span>
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <i class="fa fa-user-secret">
@@ -43,7 +46,6 @@
                                     <button class="btn btn-default reveal"onclick="myFunction()"  type="button"><i class="glyphicon glyphicon-eye-open"></i></button>
                                 </span>
                                 <script>
-
                                     function myFunction() {
                                         var x = document.getElementById("password");
                                         if (x.type === "password") {

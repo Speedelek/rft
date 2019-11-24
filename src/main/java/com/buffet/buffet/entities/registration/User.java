@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table( name="users" )
@@ -14,14 +16,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column( unique=true, nullable=false, name = "email" )
+    @Column( name = "email", nullable=false, unique=true )
+    @NotEmpty(message = "Adj meg egy email címet")
+    @Email(message = "Please provide a valid e-mail")
     private String email;
 
-
     @Column( nullable=false, name = "password")
+    @NotEmpty(message = "Adj meg egy jelszót")
     private String password;
 
     @Column(name = "username")
+    @NotEmpty(message = "Adj meg egy felhasználónevet")
     private String username;
 
     @Column(name = "activation")

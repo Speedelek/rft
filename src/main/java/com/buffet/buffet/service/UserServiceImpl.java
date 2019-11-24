@@ -76,7 +76,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		/*User userCheck = userRepository.findByEmail(userToRegister.getEmail());
 
 		if (userCheck != null)
-			return "alreadyExists";*/
+			return "emailExists";*/
 
         Role userRole = roleRepository.findByRole(USER_ROLE);
         if (userRole != null) {

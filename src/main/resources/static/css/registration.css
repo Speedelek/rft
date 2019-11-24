@@ -3,7 +3,7 @@
     top: 50%;
     left: 50%;
     max-width: 450px;
-    height: 380px;
+    min-height: 380px;
     border: 1px solid #9C9C9C;
     background-image: linear-gradient(lightskyblue,aliceblue);
 }
@@ -12,6 +12,10 @@
 }
 
 .form-control{
-    max-width: 380px;
+    max-width: 100%;
 }
 
+
+#regBtn{
+    margin-bottom: 20px;
+}
