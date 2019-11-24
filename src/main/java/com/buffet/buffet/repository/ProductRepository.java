@@ -20,4 +20,9 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
             nativeQuery = true)
     List<Product> findProductByBuffetId(@Param("buffetId") String buffetId);
 
+    @Query(value = "select termek_id, nev, ar, kategoria_id from termek where termek_id = :productIdInt",
+            nativeQuery = true)
+    Product findById(@Param("productIdInt") Integer productIdInt);
+
+    //Product findById(Integer productId);
 }

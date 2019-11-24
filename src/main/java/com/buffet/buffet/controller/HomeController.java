@@ -1,10 +1,12 @@
 package com.buffet.buffet.controller;
 
+import com.buffet.buffet.entities.OrderedProductsEntity;
 import com.buffet.buffet.entities.Product;
 import com.buffet.buffet.entities.registration.Role;
 import com.buffet.buffet.entities.registration.User;
 import com.buffet.buffet.repository.UserRepository;
 import com.buffet.buffet.service.BuffetService;
+import com.buffet.buffet.service.OrderedProductsService;
 import com.buffet.buffet.service.ProductService;
 import com.buffet.buffet.service.UserService;
 import org.slf4j.Logger;
@@ -33,6 +35,7 @@ public class HomeController {
     private BuffetService buffetService;
     private UserService userService;
     private ProductService productService;
+    private OrderedProductsService orderedProductsService;
     private UserRepository userRepository;
 
 
@@ -51,6 +54,10 @@ public class HomeController {
         this.productService = productService;
     }
 
+    @Autowired
+    public void setOrderedProductsService(OrderedProductsService orderedProductsService) {
+        this.orderedProductsService = orderedProductsService;
+    }
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -117,6 +124,7 @@ public class HomeController {
     }
 
 
+
     @RequestMapping("/admin_page")
     public String adminPage() {
         return "admin_page";
@@ -174,9 +182,9 @@ public class HomeController {
 
     }*/
 
-    @RequestMapping("/buffet/{buffetId}")
-    public String singleBuffet(Model model, @PathVariable(value = "buffetId") String buffetId) throws Exception {
-        if (buffetId == null) throw new Exception("Nincs id");
+    @RequestMapping("/buffet/{buffetid}")
+    public String singleBuffet(Model model, @PathVariable(value = "buffetid") String buffetId) throws Exception{
+        if(buffetId == null) throw new Exception("Nincs id");
         model.addAttribute("products", productService.getProductByBuffetId(buffetId));
 
         Long id = Long.parseLong(buffetId);
@@ -190,4 +198,40 @@ public class HomeController {
         model.addAttribute("products", productService.getProductByKategoria(categoryInt));
         return "products";
     }
+
+    @RequestMapping("/buffet/{buffetid}/{productid}")
+    public String chooseProduct(Model model, @PathVariable(value = "buffetid") String buffetId, @PathVariable(value = "productid") String productId) throws Exception{
+        Integer buffetIdInt = Integer.parseInt(buffetId);
+        Integer productIdInt = Integer.parseInt(productId);
+        model.addAttribute("actualProduct", productService.getProductById(productIdInt));
+        model.addAttribute("buffetId", buffetIdInt);
+        System.out.println(productService.getProductById(productIdInt).getName());
+        model.addAttribute("orderedProductsEntity", new OrderedProductsEntity());
+        return "productOrder";
+    }
+
+    @PostMapping("/order/{buffetid}/{productid}")
+    public String setNewOrder(Model model, @ModelAttribute OrderedProductsEntity orderedProductsEntity, @PathVariable(value = "buffetid") String buffetId,  @PathVariable(value = "productid") String productId ) throws Exception{
+        Integer buffetIdInt = Integer.parseInt(buffetId);
+        Integer productIdInt = Integer.parseInt(productId);
+        model.addAttribute("messageg", "Siker");
+        model.addAttribute("products", productService.getProductByBuffetId(buffetId));
+        model.addAttribute("actualBuffet", buffetService.getActualBuffet(buffetIdInt));
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        Integer userId = Integer.valueOf(userService.findByUsername(authentication.getName()).getId().intValue());
+        Integer order_id = orderedProductsService.getLastOrderId()+1;
+
+        Integer orderedItemQuantity = orderedProductsService.getOrderedItemQuantiy(buffetIdInt, productIdInt);
+        System.out.println(orderedItemQuantity);
+        orderedItemQuantity--;
+        orderedProductsService.decreaseOrderedItemQuantity(buffetIdInt, productIdInt, orderedItemQuantity);
+
+        orderedProductsService.saveProductOrder(order_id, userId, buffetIdInt, productIdInt, orderedProductsEntity.getQuantity(), orderedProductsEntity.getTakeoverTime());
+
+
+        return "buffetProducts";
+    }
+
 }

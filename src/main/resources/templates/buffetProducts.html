@@ -30,6 +30,10 @@
                     kategoria: <span th:text="${product.kategoria}">kategoria</span>
                 </address>
 
+                <a th:href="@{'http://localhost:8080/buffet/' + ${actualBuffet.id} + '/' + ${product.id}}">
+                    <button type="button">Lefoglalom</button>
+                </a>
+
             </article>
         </div>
 
