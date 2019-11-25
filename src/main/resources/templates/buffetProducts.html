@@ -14,10 +14,13 @@
         <div class="main">
 
             <h1 th:text="${actualBuffet.name}">BuffetName</h1>
+            <div id=successfullyOrderedProduct th:if="${successfullyOrderedProduct}"
+                 class="alert alert-success" role="alert"
+                 th:text="${successfullyOrderedProduct + ' sikeresen megrendelve'} " align="center"></div>
 
             <article class="inline" th:each="product : ${products}">
                 <header>
-                    <IMG  SRC="/static/images/snack.jpg"  height="150px" width="150px">
+                    <IMG th:SRC="@{'/static/images/' + ${product.kategoria} + '.jpg'}" height="150px" width="150px">
                     <h1 th:text="${product.name}">Termek neve</h1>
                 </header>
 
@@ -26,9 +29,9 @@
                 </section>
 
 
-                <address>
+                <!--<address>
                     kategoria: <span th:text="${product.kategoria}">kategoria</span>
-                </address>
+                </address>-->
 
                 <a th:href="@{'http://localhost:8080/buffet/' + ${actualBuffet.id} + '/' + ${product.id}}">
                     <button type="button">Lefoglalom</button>

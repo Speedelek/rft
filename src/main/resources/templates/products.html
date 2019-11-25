@@ -16,7 +16,7 @@
 
     <article class="inline" th:each="product : ${products}">
         <header>
-            <IMG  SRC="/static/images/snack.jpg"  height="150px" width="150px">
+            <IMG th:SRC="@{'/static/images/' + ${product.kategoria} + '.jpg'}" height="150px" width="150px">
             <h1 th:text="${product.name}">Termek neve</h1>
         </header>
 

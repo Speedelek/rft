@@ -214,7 +214,8 @@ public class HomeController {
     public String setNewOrder(Model model, @ModelAttribute OrderedProductsEntity orderedProductsEntity, @PathVariable(value = "buffetid") String buffetId,  @PathVariable(value = "productid") String productId ) throws Exception{
         Integer buffetIdInt = Integer.parseInt(buffetId);
         Integer productIdInt = Integer.parseInt(productId);
-        model.addAttribute("messageg", "Siker");
+        //model.addAttribute("message", productService.getProductById(orderedProductsEntity.getId()).getName());
+        model.addAttribute("successfullyOrderedProduct", productService.getProductById(productIdInt).getName());
         model.addAttribute("products", productService.getProductByBuffetId(buffetId));
         model.addAttribute("actualBuffet", buffetService.getActualBuffet(buffetIdInt));
 
@@ -225,7 +226,7 @@ public class HomeController {
 
         Integer orderedItemQuantity = orderedProductsService.getOrderedItemQuantiy(buffetIdInt, productIdInt);
         System.out.println(orderedItemQuantity);
-        orderedItemQuantity--;
+        orderedItemQuantity = orderedItemQuantity - orderedProductsEntity.getQuantity();
         orderedProductsService.decreaseOrderedItemQuantity(buffetIdInt, productIdInt, orderedItemQuantity);
 
         orderedProductsService.saveProductOrder(order_id, userId, buffetIdInt, productIdInt, orderedProductsEntity.getQuantity(), orderedProductsEntity.getTakeoverTime());
