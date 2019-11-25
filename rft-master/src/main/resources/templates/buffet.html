@@ -2,39 +2,47 @@
 <html lang="hu" xmlns:layout="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.w3.org/1999/xhtml">
 
-<head th:replace="layouts/header :: header"></head>
+<head th:insert="layouts/header :: header">
+    <link rel="stylesheet" th:href="@{../../static/css/buffet.css}" href="../static/css/buffet.css"/>
+</head>
 <body>
 
 
+<div th:replace="layouts/jumpTopBtn :: jumpTop"></div>
 
-<div id="container">
+<div id="container" class="content">
+
+
 
     <nav th:replace="layouts/navbar :: navbar-default"></nav>
 
-    <h2>bufek</h2>
 
-    <article th:each="buffet : ${buffets}">
-        <header>
+
+    <article  class="inline-buffet" th:each="buffet : ${buffets}">
+
+        <a class="inline-buffet" style="--hover: #F0F0F0 " th:href="@{'buffet/' + ${buffet.id}}">
             <h1 th:text="${buffet.name}">This is the buffet's name</h1>
-        </header>
-
-        <section th:text="${buffet.address}">
-            <p>This is the buffet's address</p>
-            <p></p>
-        </section>
 
 
-        <address>
-            Team: <span th:text="${buffet.team}">teamNumber</span>
-        </address>
-        <hr/>
+
+            <section th:text="${buffet.address}">
+                <p>This is the buffet's address</p>
+                <p></p>
+            </section>
+
+
+            <address>
+                Team: <span th:text="${buffet.team}">teamNumber</span>
+            </address>
+        </a>
     </article>
 
-</div>
-<footer>
-    <HR>
-    Készítette: Cseke Tamás, Kákóczky Ákos, Oszkocsil Krisztián
-</footer>
 
+    <br>
+    <br>
+
+    <footer th:replace="layouts/footer :: footer"></footer>
+
+</div>
 </body>
 </html>

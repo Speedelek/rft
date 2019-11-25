@@ -2,22 +2,99 @@
 <html lang="hu"  xmlns:layout="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.w3.org/1999/xhtml">
 
-<head th:replace="layouts/header :: header"></head>
+<head th:insert="layouts/header :: header">
+    <link rel="stylesheet" th:href="@{../../static/css/profile.css}" href="../static/css/profile.css"/>
+</head>
 <body>
 
 
-<div id="container">
+<div id="container" class="content">
 
     <nav th:replace="layouts/navbar :: navbar-default"></nav>
 
+    <div class="container">
+        <div class="row">
 
-    <h2>sajat profilom</h2>
 
+            <div class="col-md-7" id="profile_box">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">  <h4 >Profilom</h4></div>
+                    <div class="panel-body">
+
+                        <div class="box box-info">
+
+                            <div class="box-body">
+                                <div class="col-sm-6">
+                                    <div  class="profil_image" align="center"> <img alt="User Pic" src="static/images/profile.jpg" id="profile-image1" class="img-circle img-responsive">
+
+                                        <input id="profile-image-upload" class="hidden" type="file">
+                                        <div style="color:#999;" >click here to change profile image</div>
+                                        <!--Upload Image Js And Css-->
+
+                                    </div>
+                                    <br>
+                                </div>
+                                <div class="col-sm-6">
+                                    <h1 th:text="${user.username}" style="color:#00b1b1;"> </h1>
+                                    <h2 th:text="${user.email}"> </h2>
+                                </div>
+                                <div class="clearfix"></div>
+                                <hr style="margin:5px 0 5px 0;">
+
+                                <div class="col-sm-5 col-xs-6 tital " >Teljes név:</div><span th:text="${user.fullname}"></span><div class="col-sm-7"> </div>
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+                                <div class="col-sm-5 col-xs-6 tital " >Születési idő:</div><span th:text="${user.birth_date}"></span><div class="col-sm-7"></div>
+
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+                                <div class="col-sm-5 col-xs-6 tital " >Telefonszám:</div><span th:text="${user.phone_number}"></span><div class="col-sm-7"></div>
+
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+                                <div class="col-sm-5 col-xs-6 tital " >Email cím:</div><span th:text="${user.email}"></span><div class="col-sm-7"></div>
+
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+                                <div class="col-sm-5 col-xs-6 tital " >Lakcím:</div><span th:text="${user.address}"></span><div class="col-sm-7"></div>
+
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+                                <div class="col-sm-5 col-xs-6 tital " >Megjegyzés:</div><span th:text="${user.remark}"></span><div class="col-sm-7"></div>
+
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+
+<!--                                <button id="editbtn" type="button" class="btn btn-info btn-primary center-block" href="/profile_edit">Szerkeszt</button>-->
+                                <a id="editbtn" class="btn btn-info btn-primary center-block" href="/profile_edit" role="button">Profil szerkesztése</a>
+
+                                <form align="center" name="delete" id="deletebtn" th:action="@{/delete}" method="post" class="form-delete">
+                                    <button class="btn btn-danger btn-primary center-block" type="submit">Profil törlése</button>
+                                </form>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<footer th:replace="layouts/footer :: footer"></footer>
 </div>
-<footer>
-    <HR>
-    Készítette: Cseke Tamás, Kákóczky Ákos, Oszkocsil Krisztián
-</footer>
 
 </body>
 </html>

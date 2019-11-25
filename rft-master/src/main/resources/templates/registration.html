@@ -7,26 +7,79 @@
 
 
 
-<div id="container">
+<div id="container" class="content">
 
     <nav th:replace="layouts/navbar :: navbar-default"></nav>
 
-    <h2>regisztracio</h2>
 
-    <form name="registration" th:action="@{/reg}" th:object="${user}" method="post" class="form-signin">
+    <div id="reg">
+        <div class="container">
+            <div id="reg-row" class="row justify-content-center align-items-center">
+                <div id="reg-column" class="col-md-6">
+                    <div class="reg-box col-md-12">
+                        <form autocomplete="off" name="reg-form" th:action="@{/registration}" th:object="${user}" method="post" class="form" data-toggle="validator">
+                            <h3 class="text-center text-info">Regisztráció</h3>
+
+                            <div th:if="${errorMessage}"
+                                 class="alert alert-danger" role="alert"
+                                 th:text="${errorMessage}"></div>
+
+
+                            <div th:if="${param.logout}" class="alert alert-success">Sikeresen kijelentkeztél</div>
+                            <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                                 class="validation-message alert alert-danger" role="alert"></div>
+                            <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                                 class="validation-message alert alert-danger" role="alert"></div>
+                            <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
+                                 class="validation-message alert alert-danger" role="alert"></div>
+
+                            <div class="form-group">
+                                <label for="username" class="text-info">Felhasználó név:</label><br>
+                                <input type="text" id="username" name="username" th:field="*{username}" class="form-control" placeholder="Felhasznaló név">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="text-info">Jelszó:</label><br>
+                                <input type="password" id="password" name="password" th:field="*{password}"  class="form-control" placeholder="Jelszó">
+                            </div>
+                            <div class="form-group">
+
+                                <label for="email" class="text-info">Email cím:</label><br>
+                                <input type="email" id="email" name="username" th:field="*{email}" class="form-control" placeholder="E-mail cím">
+
+
+                            </div>
+                            <button id="regBtn" class="btn btn-info btn-md" type="submit">Regisztráció</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--<form name="registration" th:action="@{/reg}" th:object="${user}" method="post" class="form-signin">
         <h2 class="form-signin-heading">Kérlek regisztrálj</h2>
-        <input type="text" id="fullName" name="fullName" th:field="*{fullName}" class="form-control" placeholder="Teljes név"  />
+        <input type="text" id="username" name="username" th:field="*{username}" class="form-control" placeholder="Felhasznaló név"  />
         <input type="text" id="email" name="username" th:field="*{email}" class="form-control" placeholder="E-mail cím"  />
         <input type="password" id="password" name="password" th:field="*{password}"  class="form-control" placeholder="Jelszó" />
         <button class="btn btn-lg btn-primary btn-block" type="submit">Regisztráció</button>
-    </form>
-    <footer>
-        <HR>
-        Készítette: Cseke Tamás, Kákóczky Ákos, Oszkocsil Krisztián
-    </footer>
+    </form>-->
 
 
+    <!-- jQuery-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+    <!-- Bootstrap Validator plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+
+
+    <footer th:replace="layouts/footer :: footer"></footer>
 </div>
-
 </body>
 </html>

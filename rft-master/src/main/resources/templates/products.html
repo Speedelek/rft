@@ -3,16 +3,20 @@
       xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head th:replace="layouts/header :: header"></head>
-<body>
 
 
+<div id="container" class="content">
 
-<div id="container">
 
     <nav th:replace="layouts/navbar :: navbar-default"></nav>
 
-    <article th:each="product : ${products}">
+    <div class="wrapper">
+        <div class="main">
+
+
+    <article class="inline" th:each="product : ${products}">
         <header>
+            <IMG  SRC="/static/images/snack.jpg"  height="150px" width="150px">
             <h1 th:text="${product.name}">Termek neve</h1>
         </header>
 
@@ -26,13 +30,17 @@
             kategoria: <span th:text="${product.kategoria}">kategoria</span>
         </address>
 
-        <hr/>
     </article>
+</div>
+
+    </div>
+    <div th:replace="layouts/jumpTopBtn :: jumpTop "></div>
+
+    <br>
+    <br>
+
+<footer th:replace="layouts/footer :: footer"></footer>
 
 </div>
-<footer>
-
-</footer>
-
 </body>
 </html>

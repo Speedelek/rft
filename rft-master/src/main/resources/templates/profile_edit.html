@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="layouts/header :: header"></head>
+<body>
+
+
+<div id="container" class="content">
+
+    <nav th:replace="layouts/navbar :: navbar-default"></nav>
+
+    <div class="row">
+        <div class="col-md-10 ">
+            <form class="form-horizontal" th:action="@{/update}" th:object="${user}" , method="post">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="username">Felhasznaló név</label>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-street-view">
+                                    </i>
+                                </div>
+                                <input readonly id="username" name="username" type="text" th:field="*{username}"
+                                       placeholder="Felhasznaló név" maxlength="255" class="form-control input-md">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="password">Jelszó</label>
+                        <div class="col-md-4">
+                            <span id="profile_edit_error" th:if="${errorMessage}" style="color:red;font-weight:bold"
+                                 role="alert" th:text="${errorMessage}"></span>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-user-secret">
+                                    </i>
+                                </div>
+                                <input  type="password" id="password" name="password"  th:value="*{password}"
+                                       placeholder="password" maxlength="255" class="form-control input-md">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default reveal"onclick="myFunction()"  type="button"><i class="glyphicon glyphicon-eye-open"></i></button>
+                                </span>
+                                <script>
+                                    function myFunction() {
+                                        var x = document.getElementById("password");
+                                        if (x.type === "password") {
+                                            x.type = "text";
+                                        } else {
+                                            x.type = "password";
+                                        }
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="Email Address">Email cím</label>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-envelope-o"></i>
+                                </div>
+                                <input readonly id="Email Address" name="Email Address" type="text" th:field="*{email}"
+                                       placeholder="Email cím" maxlength="255" class="form-control input-md">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="Full name">Teljes név</label>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-user">
+                                    </i>
+                                </div>
+                                <input id="Full name" name="Full name" type="text" th:field="*{fullname}"
+                                       placeholder="Teljes név" maxlength="50" class="form-control input-md">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="Upload photo">Fotó feltöltése</label>
+                        <div class="col-md-4">
+                            <input id="Upload photo" name="Upload photo" class="input-file" type="file">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="datepicker">Születési idő</label>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-birthday-cake">
+                                    </i>
+                                </div>
+                                <input id="datepicker" name="datepicker" type="text" th:field="*{birth_date}"
+                                       class="form-control input-md">
+                                <script>
+                                    $('#datepicker').datepicker({
+                                        format: 'yyyy-mm-dd',
+                                        uiLibrary: 'bootstrap'
+                                    }).attr('readonly', true);
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="form-group">
+                         <label class="col-md-4 control-label" for="datepicker">Születési idő</label>
+                         <div class="col-md-4">
+                             <div class="input-group">
+                                 <div class="input-group-addon">
+                                     <i class="fa fa-birthday-cake"></i>
+                                 </div>
+                                 <input type="text" id="datepicker" name="datepicker" width="270" th:value="*{birth_date}" class="form-control input-md"/>
+                                 <script>
+                                     $('#datepicker').datepicker({format: 'yyyy-mm-dd',
+                                         uiLibrary: 'bootstrap'
+                                     }).attr('readonly',true);
+                                 </script>
+                             </div>
+                         </div>
+                     </div>-->
+
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="Phone number ">Telefonszám</label>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-mobile fa-1x" style="font-size: 20px;"></i>
+                                </div>
+                                <input id="Phone number " name="Phone number " type="text" th:field="*{phone_number}"
+                                       placeholder="+36301112222 " maxlength="20" class="form-control input-md">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="Adress">Lakcím</label>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-sticky-note-o"></i>
+                                </div>
+                                <input id="Adress" name="Adress" type="text" th:field="*{address}" placeholder="Lakcím"
+                                       maxlength="100" class="form-control input-md">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="Overview">Megjegyzés</label>
+                        <div class="col-md-4">
+                            <textarea class="form-control" rows="5" id="Overview" name="Overview" th:field="*{remark}"
+                                      maxlength="1000" placeholder="Megjegyzés"></textarea>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-info btn-primary center-block" type="submit">Mentés</button>
+
+                    <!--<div class="form-group">
+                        <label class="col-md-4 control-label" ></label>
+                        <div class="col-md-4">
+                            <a id="savebtn" class="btn btn-info btn-primary center-block" type="submit" role="button">Mentés</a>
+                        </div>
+                    </div>-->
+
+                </fieldset>
+            </form>
+        </div>
+
+
+    </div>
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+
+    <footer th:replace="layouts/footer :: footer"></footer>
+</div>
+</body>
+</html>

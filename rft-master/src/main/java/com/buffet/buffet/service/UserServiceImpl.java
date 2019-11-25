@@ -4,11 +4,8 @@ import com.buffet.buffet.entities.registration.Role;
 import com.buffet.buffet.entities.registration.User;
 import com.buffet.buffet.repository.RoleRepository;
 import com.buffet.buffet.repository.UserRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Primary;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -17,8 +14,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService {
-
-    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     private UserRepository userRepository;
 
@@ -34,7 +29,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = findByEmail(username);
+        User user = this.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException(username);
         }
@@ -43,8 +38,37 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public User findByEmail(String email) {
-        return userRepository.findByEmail(email);
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        userRepository.deleteById(id);}
+
+    @Override
+    public void updateUser(User user){
+        userRepository.saveAndFlush(user);
+    }
+
+    @Override
+    public void userCheck(User user){
+        if(user.getEmail() == "")
+            user.setEmail(null);
+        if(user.getPassword() == "")
+            user.setPassword(null);
+        if(user.getUsername() == "")
+            user.setUsername(null);
+        if(user.getFullname() == "")
+            user.setFullname(null);
+        if(user.getPhone_number() == "")
+            user.setPhone_number(null);
+        if(user.getAddress() == "")
+            user.setAddress(null);
+        if(user.getRemark() == "")
+            user.setRemark(null);
+        if(user.getBirth_date() == "")
+            user.setBirth_date(null);
     }
 
     @Override
@@ -52,7 +76,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		/*User userCheck = userRepository.findByEmail(userToRegister.getEmail());
 
 		if (userCheck != null)
-			return "alreadyExists";*/
+			return "emailExists";*/
 
         Role userRole = roleRepository.findByRole(USER_ROLE);
         if (userRole != null) {
@@ -69,30 +93,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         //return "ok";
     }
 
-	/*public String generateKey()
-    {
-		String key = "";
-		Random random = new Random();
-		char[] word = new char[16];
-		for (int j = 0; j < word.length; j++) {
-			word[j] = (char) ('a' + random.nextInt(26));
-		}
-		String toReturn = new String(word);
-		log.debug("random code: " + toReturn);
-		return new String(word);
-    }*/
-/*
-	@Override
-	public String userActivation(String code) {
-		User user = userRepository.findByActivation(code);
-		if (user == null)
-		    return "noresult";
 
-		//user.setEnabled(true);
-		//user.setActivation("");
-		userRepository.save(user);
-		return "ok";
-	}*/
+
 
 
 }

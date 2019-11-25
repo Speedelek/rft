@@ -7,47 +7,42 @@
 
 <body>
 
-<nav class="navbar navbar-default" th:fragment="navbar-default">
-    <div class="container-fluid">
-        <ul class="nav navbar-nav">
-            <li class=""><a href="/">Kezdőoldal</a></li>
-            <li class=""><a href="/buffet">Bufek</a></li>
-            <!--<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Termekek<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="/products">Szendvics</a></li>
-                    <li><a href="/products">Hamburger</a></li>
-                    <li><a href="/products">Pizza</a></li>
-                    <li><a href="/products">Sos</a></li>
-                    <li><a href="/products">Edes</a></li>
-                    <li><a href="/products">Udito</a></li>
-                    <li><a href="/products">Kave</a></li>
+
+<div id="nav_bar" class="navbar" th:fragment="navbar-default" style="padding-right: 50px;margin-top: 0;margin-bottom: 0">
+    <ul>
+        <li ><a href="/">Kezdőoldal</a></li>
+        <li ><a href="/buffet">Büfék</a></li>
+
+
+        <li class="dropdown"><a>Termékek</a>
+                <ul>
+                    <li class="dropdown-content" style="overflow: hidden"><a th:href="@{'http://localhost:8080/products/' + '1'}">Szendvics</a></li>
+                    <li class="dropdown-content" style="overflow: hidden"><a th:href="@{'http://localhost:8080/products/' + '2'}">Hamburger</a></li>
+                    <li class="dropdown-content" style="overflow: hidden"><a th:href="@{'http://localhost:8080/products/' + '3'}">Pizza</a></li>
+                    <li class="dropdown-content" style="overflow: hidden"><a th:href="@{'http://localhost:8080/products/' + '4'}">Sós</a></li>
+                    <li class="dropdown-content" style="overflow: hidden"><a th:href="@{'http://localhost:8080/products/' + '5'}">Édes</a></li>
+                    <li class="dropdown-content" style="overflow: hidden"><a th:href="@{'http://localhost:8080/products/' + '6'}">Üdítő</a></li>
+                    <li class="dropdown-content" style="overflow: hidden"><a th:href="@{'http://localhost:8080/products/' + '7'}">Kávé</a></li>
                 </ul>
-            </li>-->
+        </li>
 
-            <li class="dropdown">
-                <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
-                <div class="dropdown-content">
-                    <a href="/products">Szendvics</a>
-                    <a href="/products">Hamburger</a>
-                    <a href="/products">Pizza</a>
-                    <a href="/products">Sos</a>
-                    <a href="/products">Edes</a>
-                    <a href="/products">Udito</a>
-                    <a href="/products">Kave</a>
-                </div>
-            </li>
+        <li class=""><a href="/profile">Profilom</a></li>
+        <li class=""><a href="/admin_page">Admin</a></li>
+    </ul>
 
-            <li class=""><a href="/profile">Profilom</a></li>
-            <li class=""><a href="/admin_page">Admin</a></li>
-        </ul>
-        <div class="navbar-text navbar-right">
-            Üdvözlünk <span sec:authentication="name">Anonymous </span>
-            <form sec:authorize="isAuthenticated()" id="frmlogout" th:action="@{/logout}" method="post" class="form-inline">
-                | <a href="javascript:{}" onclick="document.getElementById('frmlogout').submit(); return false;">Kijelentkezés</a>
-            </form>
-        </div>
+
+    <div class="navbar-text navbar-right" style="color: #F5F5F5;line-height: 0px;text-align: center">
+        Üdvözlünk
+        <form sec:authorize="isAuthenticated()" id="frmlogout" th:action="@{/logout}" method="post" class="form-inline">
+            <span sec:authentication="name"></span>
+            | <a class="login-out" href="javascript:{}" onclick="document.getElementById('frmlogout').submit(); return false;">Kijelentkezés</a>
+        </form>
+        <form sec:authorize="!isAuthenticated()" id="frmlogin" method="post" class="form-inline">
+            | <a class="login-out" href="javascript:{}" onclick="document.getElementById('frmlogin').submit(); return false;">Bejelentkezés</a>
+        </form>
+
     </div>
-</nav>
+</div>
 
 </body>
 

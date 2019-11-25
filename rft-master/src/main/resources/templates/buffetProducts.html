@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="hu"  xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="layouts/header :: header"></head>
+
+
+<div id="container" class="content">
+
+
+    <nav th:replace="layouts/navbar :: navbar-default"></nav>
+
+    <div class="wrapper">
+        <div class="main">
+
+            <h1 th:text="${actualBuffet.name}">BuffetName</h1>
+
+            <article class="inline" th:each="product : ${products}">
+                <header>
+                    <IMG  SRC="/static/images/snack.jpg"  height="150px" width="150px">
+                    <h1 th:text="${product.name}">Termek neve</h1>
+                </header>
+
+                <section>
+                    <p th:text="${product.ar} + 'ft'">Termek ara</p>
+                </section>
+
+
+                <address>
+                    kategoria: <span th:text="${product.kategoria}">kategoria</span>
+                </address>
+
+                <a th:href="@{'http://localhost:8080/buffet/' + ${actualBuffet.id} + '/' + ${product.id}}">
+                    <button type="button">Lefoglalom</button>
+                </a>
+
+            </article>
+        </div>
+
+    </div>
+    <div th:replace="layouts/jumpTopBtn :: jumpTop "></div>
+
+    <br>
+    <br>
+
+    <footer th:replace="layouts/footer :: footer"></footer>
+
+</div>
+</body>
+</html>

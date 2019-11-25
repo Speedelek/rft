@@ -1,0 +1,21 @@
+.reg-box {
+    --margin-top: 120px;
+    top: 50%;
+    left: 50%;
+    max-width: 450px;
+    min-height: 380px;
+    border: 1px solid #9C9C9C;
+    background-image: linear-gradient(lightskyblue,aliceblue);
+}
+#reg-form {
+    padding: 20px;
+}
+
+.form-control{
+    max-width: 100%;
+}
+
+
+#regBtn{
+    margin-bottom: 20px;
+}
