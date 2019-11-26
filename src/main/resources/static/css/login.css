@@ -20,6 +20,11 @@
 
 #register-link a:hover{
     text-decoration: none;
-    font-size: 120%;
-    background-color: red;
+    font-weight: bold;
+    background-color: #31708f;
+}
+#reg:hover{
+
+    text-decoration: none;
+
 }
