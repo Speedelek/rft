@@ -16,8 +16,15 @@ public interface OrderedProductsRepository extends CrudRepository<OrderedProduct
 
     @Transactional
     @Modifying
-    @Query(value = "insert into database1.ordered_products values (:orderId, :userId, :buffetId, :productId, :quantity, :takeouttime)",nativeQuery = true)
-    void insertByUser(@Param("orderId") Integer orderId, @Param("userId") Integer userId, @Param("buffetId") Integer buffetId, @Param("productId") Integer productId, @Param("quantity") Integer quantity, @Param("takeouttime") Integer takeouttime);
+    @Query(value = "insert into database1.ordered_products values (:orderId, :userId, :buffetId, :productId, :quantity, :takeouttime, :orderDate, :orderTime)",nativeQuery = true)
+    void insertByUser(@Param("orderId") Integer orderId,
+                      @Param("userId") Integer userId,
+                      @Param("buffetId") Integer buffetId,
+                      @Param("productId") Integer productId,
+                      @Param("quantity") Integer quantity,
+                      @Param("takeouttime") Integer takeouttime,
+                      @Param("orderDate") String orderDate,
+                      @Param("orderTime") String orderTime);
 
 
     @Query(value = "select order_id from database1.ordered_products order by order_id desc limit 1", nativeQuery = true)

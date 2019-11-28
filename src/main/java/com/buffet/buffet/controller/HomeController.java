@@ -26,6 +26,8 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 public class HomeController {
@@ -161,26 +163,6 @@ public class HomeController {
             return "auth/login";
         }
     }
-    //	@RequestMapping(value = "/reg", method = RequestMethod.POST)
-    /*@PostMapping("/reg")
-    public String reg( ModelAndView modelAndView, Model model ,@Valid User user, BindingResult bindingResult, HttpServletRequest request) {
-
-        User userCheck = userRepository.findByEmail(user.getEmail());
-        //System.out.println("check" + userCheck);
-        //System.out.println(user);
-        if (userCheck != null) {
-            System.out.println("hiba");
-            modelAndView.addObject("errorMessage", "Oops!  There is already a user registered with the email provided.");
-            return "registration";
-        }
-
-             else {
-            log.info("Uj user!");
-                userService.registerUser(user);
-            return "auth/login";
-            }
-
-    }*/
 
     @RequestMapping("/buffet/{buffetid}")
     public String singleBuffet(Model model, @PathVariable(value = "buffetid") String buffetId) throws Exception{
@@ -212,6 +194,10 @@ public class HomeController {
 
     @PostMapping("/order/{buffetid}/{productid}")
     public String setNewOrder(Model model, @ModelAttribute OrderedProductsEntity orderedProductsEntity, @PathVariable(value = "buffetid") String buffetId,  @PathVariable(value = "productid") String productId ) throws Exception{
+        Date todaysDate = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        orderedProductsEntity.setOrderDate(formatter.format(todaysDate));
+        System.out.println(orderedProductsEntity);
         Integer buffetIdInt = Integer.parseInt(buffetId);
         Integer productIdInt = Integer.parseInt(productId);
         //model.addAttribute("message", productService.getProductById(orderedProductsEntity.getId()).getName());
@@ -229,8 +215,20 @@ public class HomeController {
         orderedItemQuantity = orderedItemQuantity - orderedProductsEntity.getQuantity();
         orderedProductsService.decreaseOrderedItemQuantity(buffetIdInt, productIdInt, orderedItemQuantity);
 
-        orderedProductsService.saveProductOrder(order_id, userId, buffetIdInt, productIdInt, orderedProductsEntity.getQuantity(), orderedProductsEntity.getTakeoverTime());
+        orderedProductsService.saveProductOrder(
+                order_id,
+                userId,
+                buffetIdInt,
+                productIdInt,
+                orderedProductsEntity.getQuantity(),
+                orderedProductsEntity.getTakeoverTime(),
+                orderedProductsEntity.getOrderDate(),
+                orderedProductsEntity.getOrderTime()
+        );
 
+
+
+        //System.out.println("rendelesi ido" + orderedProductsEntity.getOrderTime());
 
         return "buffetProducts";
     }

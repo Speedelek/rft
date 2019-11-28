@@ -16,8 +16,8 @@ public class OrderedProductsService {
     }
 
     @Transactional
-    public void saveProductOrder(Integer orderId, Integer userId, Integer buffetIdInt, Integer productIdInt, Integer quantity, Integer takeoverTime) {
-        orderedProductsRepository.insertByUser(orderId, userId, buffetIdInt, productIdInt, quantity, takeoverTime);
+    public void saveProductOrder(Integer orderId, Integer userId, Integer buffetIdInt, Integer productIdInt, Integer quantity, Integer takeoverTime, String orderDate, String orderTime) {
+        orderedProductsRepository.insertByUser(orderId, userId, buffetIdInt, productIdInt, quantity, takeoverTime, orderDate, orderTime);
     }
 
     public Integer getLastOrderId(){ return orderedProductsRepository.findLastOrder();}

@@ -27,6 +27,12 @@ public class OrderedProductsEntity {
     @Column(name = "hatarido")
     private int takeoverTime;
 
+    @Column(name = "rendeles_datum")
+    private String orderDate;
+
+    @Column(name = "rendeles_ido")
+    private String orderTime;
+
     public int getId() {
         return id;
     }
@@ -73,5 +79,35 @@ public class OrderedProductsEntity {
 
     public void setTakeoverTime(int takeoverTime) {
         this.takeoverTime = takeoverTime;
+    }
+
+    public String getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(String orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    public String getOrderTime() {
+        return orderTime;
+    }
+
+    public void setOrderTime(String orderTime) {
+        this.orderTime = orderTime;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderedProductsEntity{" +
+                "id=" + id +
+                ", user_id=" + user_id +
+                ", buffet_id=" + buffet_id +
+                ", product_id=" + product_id +
+                ", quantity=" + quantity +
+                ", takeoverTime=" + takeoverTime +
+                ", orderDate=" + orderDate +
+                ", orderTime=" + orderTime +
+                '}';
     }
 }
