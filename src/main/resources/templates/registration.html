@@ -35,16 +35,16 @@
 
                             <div class="form-group">
                                 <label for="username" class="text-info">Felhasználó név:</label><br>
-                                <input type="text" id="username" name="username" th:field="*{username}" class="form-control" placeholder="Felhasznaló név">
+                                <input type="text" id="username" name="username" maxlength="255" th:field="*{username}" class="form-control" placeholder="Felhasznaló név">
                             </div>
                             <div class="form-group">
                                 <label for="password" class="text-info">Jelszó:</label><br>
-                                <input type="password" id="password" name="password" th:field="*{password}"  class="form-control" placeholder="Jelszó">
+                                <input type="password" id="password" name="password" maxlength="255" th:field="*{password}"  class="form-control" placeholder="Jelszó">
                             </div>
                             <div class="form-group">
 
                                 <label for="email" class="text-info">Email cím:</label><br>
-                                <input type="email" id="email" name="username" th:field="*{email}" class="form-control" placeholder="E-mail cím">
+                                <input type="email" id="email" name="username" th:field="*{email}" maxlength="255" class="form-control" placeholder="E-mail cím">
 
 
                             </div>
@@ -55,15 +55,6 @@
             </div>
         </div>
     </div>
-
-
-    <!--<form name="registration" th:action="@{/reg}" th:object="${user}" method="post" class="form-signin">
-        <h2 class="form-signin-heading">Kérlek regisztrálj</h2>
-        <input type="text" id="username" name="username" th:field="*{username}" class="form-control" placeholder="Felhasznaló név"  />
-        <input type="text" id="email" name="username" th:field="*{email}" class="form-control" placeholder="E-mail cím"  />
-        <input type="password" id="password" name="password" th:field="*{password}"  class="form-control" placeholder="Jelszó" />
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Regisztráció</button>
-    </form>-->
 
 
     <!-- jQuery-->

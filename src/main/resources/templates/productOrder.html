@@ -46,42 +46,12 @@
 
     <div class="wrapper" style=" margin-left: 35%; margin-top: 150px;">
         <div class="order">
-<!--        < class="main">-->
-
-            <!--<h1 th:text="actualProduct.name">termék név</h1>
-            <p>Mennyiség: </p>
-            <input type="number" name="quantity">
-            <p>Kérem adja meg hány órára szeretné megrendelni: </p>
-            <input type="time" name="orderTime">
-
-            <button type="button">Leadás</button>
-
-            <a th:href="@{'http://localhost:8080/buffet/' + ${buffetId}}"><p>Szeretném folytatni a vásárlást</p></a>>
-
-            <form action="#" th:action="@{/http://localhost:8080/buffet}" th:object="$prod" method="post">
-                <p>Id: <input type="number" th:field="*{id}" /></p>
-            </form>-->
-            <!--<h1 th:text="${actualProduct.name} + megrendelése">Termék név</h1>
-            <form action="#" th:action="@{'/buffet/productorder/' + ${buffetId} + '/' +${actualProduct.id}}" th:object="${orderedProductsEntity}" method="post">
-                <p>Mennyiség: <input type="number" min="08:00" max="20:00" th:field="*{quantity}"/></p>
-                <p>Átvétel időpontja: <input type="time" min="8" max="20" th:field="takeoverTime" /></p>
-                <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-            </form>-->
-        <!--<form name="order-form" th:action="@{'/order/' + ${buffetId} + '/' +${actualProduct.id}}" th:object="${orderedProductEntity}" method="post">-->
-            <form  name="order-form" th:action="@{'/order/' + ${buffetId} + '/' +${actualProduct.id}}" th:object="${orderedProductsEntity}" method="post" class="form">
+             <form  name="order-form" th:action="@{'/order/' + ${buffetId} + '/' +${actualProduct.id}}" th:object="${orderedProductsEntity}" method="post" class="form">
                 <h3 class="text-center text-info" style="margin-top: 0px;margin-bottom: 30px;">Rendelés</h3>
                 <div class="form-group">
                 <label for = "quantity" class="text-info">Mennyiség: </label>
                 <input type="number" id="quantity" name="quantity" min="1" max="10" th:field="*{quantity}" />
                 </div>
-                <div class="form-group">
-                <label for = "takeoverTime" class="text-info">Ekkorra foglal: </label>
-                <input type="number" id="takeoverTime" name="takeoverTime" min="8" max="20" step="1" th:field="*{takeoverTime}" />
-                </div>
-
-<!----------------------->
-
-
 
                 <div class='input-group date' id='datetimepicker3'>
                     <input type='text' class="form-control" aria-readonly="false"  th:field="*{orderTime}"/>
@@ -91,57 +61,25 @@
                 </div>
                 <script type="text/javascript">
                     var date = new Date();
-                    var year = date.getFullYear();
-                    var month = date.getMonth();
-                    var day = date.getDay();
-                    var hour = date.getHours();
-                    var minute = date.getMinutes();
                     $(function () {
                         $('#datetimepicker3').datetimepicker({
-
                             format: 'HH:mm',
                             minDate:date,
                             enabledHours: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
-
-
-                        }).datetimepicker( "option", "disabled", true );
+                        });
                     });
                 </script>
 
-
-
-              <!--  <div class="row">
-                    <div class="col">
-                        <label class="label-in">Time</label>
-                        <input class="timepicker" id="event-time" type="text"  required="">
-                    </div>
-                </div>
-
-                &lt;!&ndash;Script&ndash;&gt;
-                <script src="Scripts/ClockPicker.js"></script>
-                <script>
-                    $('.timepicker').timepicker({
-                        defaultTime: 'current',
-
-                    });
-                </script>-->
-
-
-
-
-
-<!------------------------------->
 
                 <input class="btn btn-info btn-md" type="submit" value="Elfogadás" style="border: #30332e "/>
 
 
             </form>
-            <!--<p th:text="msg.">siker?</p>-->
+
         </div>
 
     </div>
 </div>
-    <!--<div th:replace="layouts/jumpTopBtn :: jumpTop "></div>-->
 
 
     <br>

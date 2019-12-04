@@ -11,7 +11,7 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 
     List<Product> findAll();
 
-    List<Product> findByKategoria(int category);
+    List<Product> findByCategoryId(int categoryId);
 
     @Query(value = "select t.termek_id, t.nev, t.ar, t.kategoria_id" +
             " from termek t join bufe_termek bt on t.termek_id = bt.termek_id" +

@@ -15,10 +15,10 @@ public class Product {
     private String name;
 
     @Column(name = "ar")
-    private int ar;
+    private int price;
 
     @Column(name = "kategoria_id")
-    private int kategoria;
+    private int categoryId;
 
     public long getId() {
         return id;
@@ -36,20 +36,20 @@ public class Product {
         this.name = name;
     }
 
-    public int getAr() {
-        return ar;
+    public int getPrice() {
+        return price;
     }
 
-    public void setAr(int ar) {
-        this.ar = ar;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
-    public int getKategoria() {
-        return kategoria;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setKategoria(int kategoria) {
-        this.kategoria = kategoria;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     @Override
@@ -57,8 +57,8 @@ public class Product {
         return "Product{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", ar=" + ar +
-                ", kategoria=" + kategoria +
+                ", ar=" + price +
+                ", kategoriaId=" + categoryId +
                 '}';
     }
 }

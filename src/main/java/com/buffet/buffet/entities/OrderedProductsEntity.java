@@ -27,9 +27,6 @@ public class OrderedProductsEntity {
     @Column(name = "db")
     private int quantity;
 
-    @Column(name = "hatarido")
-    private int takeoverTime;
-
     @Column(name = "rendeles_datum")
     private String orderDate;
 
@@ -84,14 +81,6 @@ public class OrderedProductsEntity {
         this.quantity = quantity;
     }
 
-    public int getTakeoverTime() {
-        return takeoverTime;
-    }
-
-    public void setTakeoverTime(int takeoverTime) {
-        this.takeoverTime = takeoverTime;
-    }
-
     public String getOrderDate() {
         return orderDate;
     }
@@ -116,7 +105,6 @@ public class OrderedProductsEntity {
                 ", buffet_id=" + buffet_id +
                 ", product_id=" + product_id +
                 ", quantity=" + quantity +
-                ", takeoverTime=" + takeoverTime +
                 ", orderDate=" + orderDate +
                 ", orderTime=" + orderTime +
                 ", username=" + username +

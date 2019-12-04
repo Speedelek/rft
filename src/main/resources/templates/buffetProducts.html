@@ -20,12 +20,12 @@
 
             <article class="inline" th:each="product : ${products}">
                 <header>
-                    <IMG th:SRC="@{'/static/images/' + ${product.kategoria} + '.jpg'}" height="150px" width="150px">
-                    <h1 th:text="${product.name}">Termek neve</h1>
+                    <IMG th:SRC="@{'/static/images/' + ${product.categoryId} + '.jpg'}" height="150px" width="150px">
+                    <h1 th:text="${product.name}">Termék neve</h1>
                 </header>
 
                 <section>
-                    <p th:text="${product.ar} + ' Ft'">Termek ara</p>
+                    <p th:text="${product.price} + ' Ft'">Termék ára</p>
                 </section>
 
 

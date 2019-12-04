@@ -4,7 +4,6 @@ import com.buffet.buffet.entities.BuffetEntity;
 import com.buffet.buffet.entities.OrderedProdWithNames;
 import com.buffet.buffet.entities.OrderedProductsEntity;
 import com.buffet.buffet.entities.Product;
-import com.buffet.buffet.entities.registration.Role;
 import com.buffet.buffet.entities.registration.User;
 import com.buffet.buffet.repository.UserRepository;
 import com.buffet.buffet.service.BuffetService;
@@ -73,7 +72,6 @@ public class HomeController {
 
     @RequestMapping("/")
     public String home() {
-
         return "home";
     }
 
@@ -99,21 +97,12 @@ public class HomeController {
                 product = productService.getProductById(entity.getProduct_id());
                 buffet = buffetService.getProductById(entity.getBuffet_id());
                 OrderedProdWithNames prod =
-                        new OrderedProdWithNames(buffet.getName(),product.getName(), entity.getQuantity(), product.getAr(), entity.getOrderDate(), entity.getOrderTime());
+                        new OrderedProdWithNames(buffet.getName(),product.getName(), entity.getQuantity(), product.getPrice(), entity.getOrderDate(), entity.getOrderTime());
                 userOrdersList.add(prod);
 
                 System.out.println(userOrdersList);
             }
         }
-        /*List<OrderedProductsEntity> userOrdersList = new ArrayList<>();
-
-        for (OrderedProductsEntity entity : orderedProductsService.getOrderedProductsEntities())
-        {
-            if (username.equals(entity.getUsername())){
-                userOrdersList.add(entity);
-            }
-        }*/
-
         Collections.reverse(userOrdersList);
         model.addAttribute("orderedProducts", userOrdersList);
         return "userOrders";
@@ -166,12 +155,8 @@ public class HomeController {
         }
     }
 
-
-
-
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model) {
-
         model.addAttribute("user", new User());
         return "registration";
     }
@@ -184,13 +169,11 @@ public class HomeController {
             System.out.println("hiba email");
             model.addAttribute("errorMessage", "Már létezik ilyen email cím");
             bindingResult.reject("email");
-            //return "registration";
         }
         if (userCheck2 != null) {
             System.out.println("hiba username");
             model.addAttribute("errorMessage", "Már létezik ilyen felhasználó");
             bindingResult.reject("username");
-            //return "registration";
         }
         if (bindingResult.hasErrors()) {
             return "registration";
@@ -205,7 +188,6 @@ public class HomeController {
     public String singleBuffet(Model model, @PathVariable(value = "buffetid") String buffetId) throws Exception{
         if(buffetId == null) throw new Exception("Nincs id");
         model.addAttribute("products", productService.getProductByBuffetId(buffetId));
-
         Long id = Long.parseLong(buffetId);
         model.addAttribute("actualBuffet", buffetService.getActualBuffet(id));
         return "buffetProducts";
@@ -214,7 +196,7 @@ public class HomeController {
     @RequestMapping("/products/{category}")
     public String products(Model model, @PathVariable(value = "category") String category) throws Exception {
         Integer categoryInt = Integer.parseInt(category);
-        model.addAttribute("products", productService.getProductByKategoria(categoryInt));
+        model.addAttribute("products", productService.getProductByCategoryId(categoryInt));
         return "products";
     }
 
@@ -224,7 +206,6 @@ public class HomeController {
         Integer productIdInt = Integer.parseInt(productId);
         model.addAttribute("actualProduct", productService.getProductById(productIdInt));
         model.addAttribute("buffetId", buffetIdInt);
-        System.out.println(productService.getProductById(productIdInt).getName());
         model.addAttribute("orderedProductsEntity", new OrderedProductsEntity());
         return "productOrder";
     }
@@ -238,7 +219,6 @@ public class HomeController {
         Date todaysDate = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         orderedProductsEntity.setOrderDate(formatter.format(todaysDate));
-        System.out.println(orderedProductsEntity);
         Integer buffetIdInt = Integer.parseInt(buffetId);
         Integer productIdInt = Integer.parseInt(productId);
         //model.addAttribute("message", productService.getProductById(orderedProductsEntity.getId()).getName());
@@ -250,11 +230,9 @@ public class HomeController {
 
         Integer userId = Integer.valueOf(userService.findByUsername(authentication.getName()).getId().intValue());
         String username = currentUser.getUsername();
-        System.out.println(username);
         Integer order_id = orderedProductsService.getLastOrderId()+1;
 
         Integer orderedItemQuantity = orderedProductsService.getOrderedItemQuantiy(buffetIdInt, productIdInt);
-        System.out.println(orderedItemQuantity);
         orderedItemQuantity = orderedItemQuantity - orderedProductsEntity.getQuantity();
         orderedProductsService.decreaseOrderedItemQuantity(buffetIdInt, productIdInt, orderedItemQuantity);
 
@@ -264,15 +242,10 @@ public class HomeController {
                 buffetIdInt,
                 productIdInt,
                 orderedProductsEntity.getQuantity(),
-                orderedProductsEntity.getTakeoverTime(),
                 orderedProductsEntity.getOrderDate(),
                 orderedProductsEntity.getOrderTime(),
                 username
         );
-
-
-
-        //System.out.println("rendelesi ido" + orderedProductsEntity.getOrderTime());
 
         return "buffetProducts";
     }
