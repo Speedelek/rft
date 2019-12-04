@@ -100,7 +100,6 @@ public class HomeController {
                         new OrderedProdWithNames(buffet.getName(),product.getName(), entity.getQuantity(), product.getPrice(), entity.getOrderDate(), entity.getOrderTime());
                 userOrdersList.add(prod);
 
-                System.out.println(userOrdersList);
             }
         }
         Collections.reverse(userOrdersList);
@@ -129,7 +128,6 @@ public class HomeController {
         // usersRoleSercive.deleteUsersRole(user);
         Long id = user.getId();
         userService.deleteById(Long.valueOf(id));
-        System.out.println("delete" + user);
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
@@ -143,7 +141,6 @@ public class HomeController {
         if (user.getPassword() == "") {
             model.addAttribute("errorMessage", "Adj meg egy jelszót");
             bindingResult.reject("password");
-            System.out.println("jelszo");
         }
         if (bindingResult.hasErrors()) {
             return "profile_edit";
@@ -166,12 +163,10 @@ public class HomeController {
         User userCheck = userRepository.findByEmail(user.getEmail());
         User userCheck2 = userRepository.findByUsername(user.getUsername());
         if (userCheck != null) {
-            System.out.println("hiba email");
             model.addAttribute("errorMessage", "Már létezik ilyen email cím");
             bindingResult.reject("email");
         }
         if (userCheck2 != null) {
-            System.out.println("hiba username");
             model.addAttribute("errorMessage", "Már létezik ilyen felhasználó");
             bindingResult.reject("username");
         }
