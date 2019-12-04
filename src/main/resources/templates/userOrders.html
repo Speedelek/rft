@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="hu"  xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="layouts/header :: header"></head>
+<body>
+
+
+<div id="container" class="content">
+
+    <nav th:replace="layouts/navbar :: navbar-default"></nav>
+
+    <div class="row" >
+        <div class="col-md-12" >
+
+            <table id="table" class="table" >
+                <thead>
+                <tr>
+                    <th>
+                        Büfé
+                    </th>
+                    <th>
+                        Termék
+                    </th>
+                    <th>
+                        Darab
+                    </th>
+                    <th>
+                        Összesen
+                    </th>
+                    <th>
+                        Rendelés ideje
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="orderedProduct : ${orderedProducts}">
+                    <td>
+                        <span th:text="${orderedProduct.buffetName}">asdaf</span>
+                       <!-- <span th:text="${productName.name}"></span>-->
+                    </td>
+                    <td>
+                        <span th:text="${orderedProduct.productName}"></span>
+                    </td>
+                    <td>
+                        <span th:text="${orderedProduct.productQuantity}"></span>
+                    </td>
+                    <td>
+                        <span th:text="${orderedProduct.price}*${orderedProduct.productQuantity}+ ' Ft'"></span>
+                    </td>
+                    <td>
+                        <span th:text="${orderedProduct.orderDate} + ' ' + ${orderedProduct.orderTime}"></span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <footer th:replace="layouts/footer :: footer"></footer>
+</div>
+</body>
+</html>

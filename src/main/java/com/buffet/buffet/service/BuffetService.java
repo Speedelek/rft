@@ -25,5 +25,9 @@ public class BuffetService {
     }
 
     public BuffetEntity getActualBuffet(long id) { return buffetRepo.findById(id); }
+
+    public BuffetEntity getProductById(Integer buffetIdInt) {
+        return buffetRepo.findById(buffetIdInt);
+    }
 }
 

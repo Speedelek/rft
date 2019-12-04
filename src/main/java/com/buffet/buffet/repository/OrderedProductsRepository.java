@@ -10,13 +10,16 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Time;
+import java.util.List;
 
 @Repository
 public interface OrderedProductsRepository extends CrudRepository<OrderedProductsEntity, Long> {
 
+    List<OrderedProductsEntity> findAll();
+
     @Transactional
     @Modifying
-    @Query(value = "insert into database1.ordered_products values (:orderId, :userId, :buffetId, :productId, :quantity, :takeouttime, :orderDate, :orderTime)",nativeQuery = true)
+    @Query(value = "insert into database1.ordered_products values (:orderId, :userId, :buffetId, :productId, :quantity, :takeouttime, :orderDate, :orderTime, :username)",nativeQuery = true)
     void insertByUser(@Param("orderId") Integer orderId,
                       @Param("userId") Integer userId,
                       @Param("buffetId") Integer buffetId,
@@ -24,7 +27,8 @@ public interface OrderedProductsRepository extends CrudRepository<OrderedProduct
                       @Param("quantity") Integer quantity,
                       @Param("takeouttime") Integer takeouttime,
                       @Param("orderDate") String orderDate,
-                      @Param("orderTime") String orderTime);
+                      @Param("orderTime") String orderTime,
+                      @Param("username") String username);
 
 
     @Query(value = "select order_id from database1.ordered_products order by order_id desc limit 1", nativeQuery = true)

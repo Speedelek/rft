@@ -1,9 +1,12 @@
 package com.buffet.buffet.service;
 
+import com.buffet.buffet.entities.OrderedProductsEntity;
 import com.buffet.buffet.repository.OrderedProductsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class OrderedProductsService {
@@ -15,9 +18,14 @@ public class OrderedProductsService {
         this.orderedProductsRepository = orderedProductsRepository;
     }
 
+    public List<OrderedProductsEntity> getOrderedProductsEntities(){
+        return orderedProductsRepository.findAll();
+    }
+
+
     @Transactional
-    public void saveProductOrder(Integer orderId, Integer userId, Integer buffetIdInt, Integer productIdInt, Integer quantity, Integer takeoverTime, String orderDate, String orderTime) {
-        orderedProductsRepository.insertByUser(orderId, userId, buffetIdInt, productIdInt, quantity, takeoverTime, orderDate, orderTime);
+    public void saveProductOrder(Integer orderId, Integer userId, Integer buffetIdInt, Integer productIdInt, Integer quantity, Integer takeoverTime, String orderDate, String orderTime, String username) {
+        orderedProductsRepository.insertByUser(orderId, userId, buffetIdInt, productIdInt, quantity, takeoverTime, orderDate, orderTime, username);
     }
 
     public Integer getLastOrderId(){ return orderedProductsRepository.findLastOrder();}
@@ -35,4 +43,6 @@ public class OrderedProductsService {
     public void decreaseProductQuantity(Integer buffetIdInt, Integer productIdInt) {
         orderedProductsRepository.decreaseProductQuantity(buffetIdInt, productIdInt);
     }*/
+
+
 }

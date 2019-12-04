@@ -1,5 +1,7 @@
 package com.buffet.buffet.controller;
 
+import com.buffet.buffet.entities.BuffetEntity;
+import com.buffet.buffet.entities.OrderedProdWithNames;
 import com.buffet.buffet.entities.OrderedProductsEntity;
 import com.buffet.buffet.entities.Product;
 import com.buffet.buffet.entities.registration.Role;
@@ -27,7 +29,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class HomeController {
@@ -76,6 +81,42 @@ public class HomeController {
     public String buffet(Model model) {
         model.addAttribute("buffets", buffetService.getBuffetEntities());
         return "buffet";
+    }
+
+    @RequestMapping("/userOrders")
+    public String userOrders(Model model,
+                             @ModelAttribute OrderedProductsEntity orderedProductsEntity,
+                             @ModelAttribute OrderedProdWithNames orderedProdWithNames,
+                             @AuthenticationPrincipal UserDetails currentUser) {
+        String username = currentUser.getUsername();
+        List<OrderedProdWithNames> userOrdersList = new ArrayList<>();
+        Product product;
+        BuffetEntity buffet;
+
+        for (OrderedProductsEntity entity : orderedProductsService.getOrderedProductsEntities())
+        {
+            if (username.equals(entity.getUsername())){
+                product = productService.getProductById(entity.getProduct_id());
+                buffet = buffetService.getProductById(entity.getBuffet_id());
+                OrderedProdWithNames prod =
+                        new OrderedProdWithNames(buffet.getName(),product.getName(), entity.getQuantity(), product.getAr(), entity.getOrderDate(), entity.getOrderTime());
+                userOrdersList.add(prod);
+
+                System.out.println(userOrdersList);
+            }
+        }
+        /*List<OrderedProductsEntity> userOrdersList = new ArrayList<>();
+
+        for (OrderedProductsEntity entity : orderedProductsService.getOrderedProductsEntities())
+        {
+            if (username.equals(entity.getUsername())){
+                userOrdersList.add(entity);
+            }
+        }*/
+
+        Collections.reverse(userOrdersList);
+        model.addAttribute("orderedProducts", userOrdersList);
+        return "userOrders";
     }
 
     @RequestMapping("/profile")
@@ -127,10 +168,6 @@ public class HomeController {
 
 
 
-    @RequestMapping("/admin_page")
-    public String adminPage() {
-        return "admin_page";
-    }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model) {
@@ -193,7 +230,11 @@ public class HomeController {
     }
 
     @PostMapping("/order/{buffetid}/{productid}")
-    public String setNewOrder(Model model, @ModelAttribute OrderedProductsEntity orderedProductsEntity, @PathVariable(value = "buffetid") String buffetId,  @PathVariable(value = "productid") String productId ) throws Exception{
+    public String setNewOrder(Model model,
+                              @AuthenticationPrincipal UserDetails currentUser,
+                              @ModelAttribute OrderedProductsEntity orderedProductsEntity,
+                              @PathVariable(value = "buffetid") String buffetId,
+                              @PathVariable(value = "productid") String productId ) throws Exception{
         Date todaysDate = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         orderedProductsEntity.setOrderDate(formatter.format(todaysDate));
@@ -208,6 +249,8 @@ public class HomeController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         Integer userId = Integer.valueOf(userService.findByUsername(authentication.getName()).getId().intValue());
+        String username = currentUser.getUsername();
+        System.out.println(username);
         Integer order_id = orderedProductsService.getLastOrderId()+1;
 
         Integer orderedItemQuantity = orderedProductsService.getOrderedItemQuantiy(buffetIdInt, productIdInt);
@@ -223,7 +266,8 @@ public class HomeController {
                 orderedProductsEntity.getQuantity(),
                 orderedProductsEntity.getTakeoverTime(),
                 orderedProductsEntity.getOrderDate(),
-                orderedProductsEntity.getOrderTime()
+                orderedProductsEntity.getOrderTime(),
+                username
         );
 
 

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Time;
 
 @Entity
-@Table(name = "ordered_product")
+@Table(name = "ordered_products")
 public class OrderedProductsEntity {
 
     @Id
@@ -14,6 +14,9 @@ public class OrderedProductsEntity {
 
     @Column(name = "user_id")
     private int user_id;
+
+    @Column(name = "username")
+    private String username;
 
     @Column(name = "bufe_id")
     private int buffet_id;
@@ -47,6 +50,14 @@ public class OrderedProductsEntity {
 
     public void setUser_id(int user_id) {
         this.user_id = user_id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public int getBuffet_id() {
@@ -108,6 +119,7 @@ public class OrderedProductsEntity {
                 ", takeoverTime=" + takeoverTime +
                 ", orderDate=" + orderDate +
                 ", orderTime=" + orderTime +
+                ", username=" + username +
                 '}';
     }
 }
