@@ -261,11 +261,13 @@ a:hover:not(.active):not(#reflink) {
 
 
 .order{
-    top: 300px;
+    text-decoration: black;
+    color: black;
+    top: 40px;
     left: 43%;
-    background-image: linear-gradient(lightskyblue,aliceblue);
+    background-image: linear-gradient(gray,white);
     width: 300px;
-    border: 1px solid gray;
+    /*border: 1px solid gray;*/
     padding: 50px;
     margin: 20px;
 

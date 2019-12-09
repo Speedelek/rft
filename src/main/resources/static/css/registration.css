@@ -1,12 +1,12 @@
 .reg-box {
     --margin-top: 120px;
-    top: 50%;
+    top: 60px;
     left: 50%;
     max-width: 450px;
     min-height: 380px;
-    border: 1px solid #9C9C9C;
-    background-image: linear-gradient(lightskyblue,aliceblue);
+    background-image: linear-gradient(gray,white);
 }
+
 #reg-form {
     padding: 20px;
 }

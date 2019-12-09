@@ -44,13 +44,16 @@
 
     <nav th:replace="layouts/navbar :: navbar-default"></nav>
 
-    <div class="wrapper" style=" margin-left: 35%; margin-top: 150px;">
+    <div class="wrapper" style=" margin-left: 35%; margin-top: 120px;">
         <div class="order">
              <form  name="order-form" th:action="@{'/order/' + ${buffetId} + '/' +${actualProduct.id}}" th:object="${orderedProductsEntity}" method="post" class="form">
-                <h3 class="text-center text-info" style="margin-top: 0px;margin-bottom: 30px;">Rendelés</h3>
+                <h3 class="text-center  text-info" style="color: #404040; margin-top: 0px;margin-bottom: 30px;">Rendelés</h3>
                 <div class="form-group">
-                <label for = "quantity" class="text-info">Mennyiség: </label>
-                <input type="number" id="quantity" name="quantity" min="1" max="10" th:field="*{quantity}" />
+                <label for = "quantity" style="color: #404040;" class="text-info">Mennyiség: </label>
+                <input type="number" id="quantity" name="quantity" min="1" max="10" style="
+
+    width: 119px;
+" th:field="*{quantity}" />
                 </div>
 
                 <div class='input-group date' id='datetimepicker3'>
@@ -71,7 +74,7 @@
                 </script>
 
 
-                <input class="btn btn-info btn-md" type="submit" value="Elfogadás" style="border: #30332e "/>
+                <input class="btn btn-info btn-md" type="submit" value="Elfogadás" style="border: #30332e;margin-top: 20px;"/>
 
 
             </form>
